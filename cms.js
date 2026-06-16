@@ -1,4 +1,4 @@
-/* GCI light CMS: injects editable content from /content/site.json.
+/* GCI light CMS: injects editable content from /site.json.
    Edited via Pages CMS (app.pagescms.org). HTML keeps current values as
    defaults, so the site still reads correctly if this file/JSON is missing. */
 (function () {
@@ -20,12 +20,29 @@
       else if (h.indexOf('mailto:') === 0) el.setAttribute('href', 'mailto:' + v);
       else el.setAttribute('href', v);
     });
-    // footer combined phone label: "89684-65555 · 78892-73599"
     document.querySelectorAll('[data-cms-phones]').forEach(function (el) {
       var c = data.contact || {};
       var parts = [c.phone1_display, c.phone2_display].filter(function (x) { return x; });
       if (parts.length) el.textContent = parts.join(' · ');
     });
+    // animated stat counters: set the target the counter animates to
+    var nums = document.querySelectorAll('[data-cms-num]');
+    nums.forEach(function (el) {
+      var v = get(data, el.getAttribute('data-cms-num'));
+      if (v != null) el.setAttribute('data-target', v);
+    });
+    // safety: if a counter already finished before this loaded (e.g. above the
+    // fold), force the correct final value after animations would have run.
+    if (nums.length) {
+      setTimeout(function () {
+        nums.forEach(function (el) {
+          var v = get(data, el.getAttribute('data-cms-num'));
+          if (v == null) return;
+          var shown = (el.textContent || '').replace(/[^\d]/g, '');
+          if (shown && shown !== String(v)) el.textContent = Number(v).toLocaleString();
+        });
+      }, 2500);
+    }
     var badge = document.querySelector('.preview-badge');
     if (badge && data.preview_badge) {
       if (data.preview_badge.show === false) badge.style.display = 'none';

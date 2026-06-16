@@ -10,5 +10,60 @@
     "phone2_display": "78892-73599",
     "email": "info.gocanadaimmigrations@gmail.com",
     "address": "1st Floor, 305, ESI Hospital Rd, Kochar Market, New Model Town, Jawaharnagar, Ludhiana"
+  },
+  "home": {
+    "eyebrow": "Study abroad, done honestly · Ludhiana",
+    "headline_before": "From here to",
+    "headline_accent": "anywhere",
+    "headline_after": "worth going.",
+    "subtext": "Canada, Australia, the UK and beyond — GCI turns admissions into visas with honest counselling, real university partnerships, and a track record families can verify."
+  },
+  "stats": {
+    "canada": {
+      "students_sent": 3500,
+      "partners": 25,
+      "success": 97,
+      "intakes": 3
+    },
+    "australia": {
+      "partners": 10,
+      "intakes": 2
+    },
+    "europe": {
+      "partners": 10,
+      "intakes": 2
+    },
+    "malaysia": {
+      "partners": 5,
+      "intakes": 2
+    },
+    "mauritius": {
+      "partners": 3,
+      "intakes": 2
+    },
+    "new_zealand": {
+      "partners": 8,
+      "intakes": 2
+    },
+    "russia": {
+      "partners": 6,
+      "intakes": 1
+    },
+    "singapore": {
+      "partners": 4,
+      "intakes": 2
+    },
+    "uae": {
+      "partners": 7,
+      "intakes": 2
+    },
+    "uk": {
+      "partners": 10,
+      "intakes": 2
+    },
+    "usa": {
+      "partners": 10,
+      "intakes": 2
+    }
   }
 }

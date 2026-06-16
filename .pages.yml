@@ -1,6 +1,6 @@
 # Pages CMS configuration -- https://pagescms.org/docs/configuration/
 # Owner edits these fields at https://app.pagescms.org (log in with the firm
-# GitHub account). Saving commits content/site.json -> Netlify redeploys (~1 min).
+# GitHub account). Saving commits site.json -> Netlify redeploys (~1 min).
 
 media:
   input: assets/img
@@ -8,7 +8,7 @@ media:
 
 content:
   - name: site
-    label: Site content (contact + preview badge)
+    label: Site content
     type: file
     path: site.json
     fields:
@@ -22,25 +22,94 @@ content:
           - name: text
             label: Badge text
             type: string
+      - name: home
+        label: Homepage hero
+        type: object
+        fields:
+          - { name: eyebrow, label: "Top tagline (above headline)", type: string }
+          - { name: headline_before, label: "Headline - first part", type: string }
+          - { name: headline_accent, label: "Headline - highlighted word", type: string }
+          - { name: headline_after, label: "Headline - last part", type: string }
+          - { name: subtext, label: "Intro paragraph", type: text }
       - name: contact
         label: Contact details (footer on every page + Contact page)
         type: object
         fields:
-          - name: phone1_link
-            label: "Phone 1 - click-to-call (include +91, no spaces)"
-            type: string
-          - name: phone1_display
-            label: "Phone 1 - as shown"
-            type: string
-          - name: phone2_link
-            label: "Phone 2 - click-to-call (include +91, no spaces)"
-            type: string
-          - name: phone2_display
-            label: "Phone 2 - as shown"
-            type: string
-          - name: email
-            label: Email address
-            type: string
-          - name: address
-            label: Office address
-            type: text
+          - { name: phone1_link, label: "Phone 1 - click-to-call (include +91, no spaces)", type: string }
+          - { name: phone1_display, label: "Phone 1 - as shown", type: string }
+          - { name: phone2_link, label: "Phone 2 - click-to-call (include +91, no spaces)", type: string }
+          - { name: phone2_display, label: "Phone 2 - as shown", type: string }
+          - { name: email, label: Email address, type: string }
+          - { name: address, label: Office address, type: text }
+      - name: stats
+        label: Country page numbers
+        type: object
+        fields:
+      - name: canada
+        label: Canada
+        type: object
+        fields:
+          - { name: students_sent, label: Students sent, type: number }
+          - { name: partners, label: Partner institutions, type: number }
+          - { name: success, label: "Study-permit success (%)", type: number }
+          - { name: intakes, label: Intakes a year, type: number }
+      - name: australia
+        label: Australia
+        type: object
+        fields:
+          - { name: partners, label: Partner institutions, type: number }
+          - { name: intakes, label: Intakes a year, type: number }
+      - name: europe
+        label: Europe
+        type: object
+        fields:
+          - { name: partners, label: Partner institutions, type: number }
+          - { name: intakes, label: Intakes a year, type: number }
+      - name: malaysia
+        label: Malaysia
+        type: object
+        fields:
+          - { name: partners, label: Partner institutions, type: number }
+          - { name: intakes, label: Intakes a year, type: number }
+      - name: mauritius
+        label: Mauritius
+        type: object
+        fields:
+          - { name: partners, label: Partner institutions, type: number }
+          - { name: intakes, label: Intakes a year, type: number }
+      - name: new_zealand
+        label: New Zealand
+        type: object
+        fields:
+          - { name: partners, label: Partner institutions, type: number }
+          - { name: intakes, label: Intakes a year, type: number }
+      - name: russia
+        label: Russia
+        type: object
+        fields:
+          - { name: partners, label: Partner institutions, type: number }
+          - { name: intakes, label: Intakes a year, type: number }
+      - name: singapore
+        label: Singapore
+        type: object
+        fields:
+          - { name: partners, label: Partner institutions, type: number }
+          - { name: intakes, label: Intakes a year, type: number }
+      - name: uae
+        label: UAE
+        type: object
+        fields:
+          - { name: partners, label: Partner institutions, type: number }
+          - { name: intakes, label: Intakes a year, type: number }
+      - name: uk
+        label: UK
+        type: object
+        fields:
+          - { name: partners, label: Partner institutions, type: number }
+          - { name: intakes, label: Intakes a year, type: number }
+      - name: usa
+        label: USA
+        type: object
+        fields:
+          - { name: partners, label: Partner institutions, type: number }
+          - { name: intakes, label: Intakes a year, type: number }

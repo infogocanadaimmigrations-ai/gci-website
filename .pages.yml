@@ -1,0 +1,46 @@
+# Pages CMS configuration -- https://pagescms.org/docs/configuration/
+# Owner edits these fields at https://app.pagescms.org (log in with the firm
+# GitHub account). Saving commits content/site.json -> Netlify redeploys (~1 min).
+
+media:
+  input: assets/img
+  output: assets/img
+
+content:
+  - name: site
+    label: Site content (contact + preview badge)
+    type: file
+    path: site.json
+    fields:
+      - name: preview_badge
+        label: Preview badge (banner on homepage)
+        type: object
+        fields:
+          - name: show
+            label: Show the preview badge?
+            type: boolean
+          - name: text
+            label: Badge text
+            type: string
+      - name: contact
+        label: Contact details (footer on every page + Contact page)
+        type: object
+        fields:
+          - name: phone1_link
+            label: "Phone 1 - click-to-call (include +91, no spaces)"
+            type: string
+          - name: phone1_display
+            label: "Phone 1 - as shown"
+            type: string
+          - name: phone2_link
+            label: "Phone 2 - click-to-call (include +91, no spaces)"
+            type: string
+          - name: phone2_display
+            label: "Phone 2 - as shown"
+            type: string
+          - name: email
+            label: Email address
+            type: string
+          - name: address
+            label: Office address
+            type: text

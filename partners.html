@@ -195,6 +195,18 @@ footer .col a{display:block; margin-bottom:9px}
  .cta-row .btn-red,.cta-row .btn-ghost{justify-content:center;width:100%}
  html,body{overflow-x:hidden}
 }
+.p-list{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+.p-list li{position:relative;padding-left:24px;color:var(--muted2);font-size:15px;line-height:1.5}
+.p-list li::before{content:"";position:absolute;left:2px;top:7px;width:8px;height:8px;border-radius:50%;background:linear-gradient(150deg,var(--red),var(--gold))}
+.p-best{margin-top:16px;font-size:13.5px;color:var(--navy);background:rgba(216,33,39,.07);border:1px solid rgba(216,33,39,.14);padding:9px 13px;border-radius:10px}
+.p-best strong{color:var(--red);margin-right:6px}
+.cmp-wrap{max-width:880px;margin:30px auto 0;overflow-x:auto}
+.cmp{width:100%;border-collapse:collapse;font-size:15px}
+.cmp th,.cmp td{text-align:left;padding:12px 15px;border-bottom:1px solid rgba(11,29,58,.1)}
+.cmp thead th{border-bottom:2px solid var(--gold);color:var(--navy);font-family:var(--serif);font-weight:500;font-size:16px}
+.cmp tbody td{color:var(--muted2)}
+.cmp tbody td:first-child{color:var(--navy);font-weight:600}
+@media(max-width:880px){.cmp{min-width:540px}}
 </style></head><body><div class="aurora"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div><div class="vignette"></div><div class="progress" id="progress"></div><div class="preview-badge">Preview build · placeholder text · AI imagery</div><div class="stage"><nav id="nav"><div class="wrap"><a href="index.html"><img class="logo" src="logo.png" alt="Go Canada Immigrations"></a><ul class="links"><li><a class="" href="index.html">Home</a></li><li><a class="" href="destinations.html">Destinations</a></li><li><a class="" href="services.html">Services</a></li><li><a class="" href="about.html">About</a></li><li><a class="" href="success.html">Success</a></li><li><a class="" href="blog.html">Blog</a></li><li><a class="active" href="partners.html">Partners</a></li><li><a class="" href="contact.html">Contact</a></li></ul><div class="nav-right"><a class="nav-call" href="portal.html">Student login</a><a class="btn-red" href="contact.html">Book free assessment</a><button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></div></div></nav><section class="page-hero"><div class="ph-bg" style="background-image:url('assets/img/4589032520.jpg')"></div><div class="ph-ov"></div><div class="wrap">
 <span class="eyebrow"><span class="rule"></span>Partner with GCI</span>
 <h1>Grow a study-abroad business with a brand families trust.</h1>
@@ -203,9 +215,18 @@ footer .col a{display:block; margin-bottom:9px}
 <section class="block light"><div class="wrap">
 <div class="sec-head reveal"><span class="eyebrow"><span class="rule"></span>Two ways to partner</span><h2>Pick the model that fits you.</h2></div>
 <div class="svc-grid" style="grid-template-columns:repeat(2,1fr);max-width:880px;margin:0 auto">
-<div class="svc reveal"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M16 20v-1.5a4 4 0 0 0-4-4H6.5a4 4 0 0 0-4 4V20"/><circle cx="9.2" cy="7.5" r="3.5"/><path d="M21.5 20v-1.5a4 4 0 0 0-3-3.85M16.5 4.15a4 4 0 0 1 0 7.5"/></svg></div><h4>Business Associate</h4><p>Bring students, and we handle the rest. You refer and counsel; GCI's team manages admissions, SOPs and the full visa process across Canada, Australia, the UK, the US and Europe. No office or brand investment — ideal for individual counsellors and small agents.</p></div>
-<div class="svc reveal"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="display:block"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9.5 21v-3.5h5V21"/><path d="M8 7h.5M11.7 7h.5M15.5 7h.5M8 11h.5M11.7 11h.5M15.5 11h.5"/></svg></div><h4>Franchise Partner</h4><p>Run your own office under the Go Canada Immigrations name, using our proven systems, real university partnerships, training and marketing support — with our processing team behind every file. Ideal if you want to build a branded local presence.</p></div>
+<div class="svc reveal"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M16 20v-1.5a4 4 0 0 0-4-4H6.5a4 4 0 0 0-4 4V20"/><circle cx="9.2" cy="7.5" r="3.5"/><path d="M21.5 20v-1.5a4 4 0 0 0-3-3.85M16.5 4.15a4 4 0 0 1 0 7.5"/></svg></div><h4>Business Associate</h4><p>Refer students and let us run the process — earn without setting up an office.</p><ul class="p-list"><li>You refer and counsel students</li><li>We manage admissions, SOPs and the full visa file</li><li>Covers Canada, Australia, the UK, the US &amp; Europe</li><li>No office or brand investment needed</li></ul><div class="p-best"><strong>Best for</strong>individual counsellors &amp; small agents</div></div>
+<div class="svc reveal"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="display:block"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9.5 21v-3.5h5V21"/><path d="M8 7h.5M11.7 7h.5M15.5 7h.5M8 11h.5M11.7 11h.5M15.5 11h.5"/></svg></div><h4>Franchise Partner</h4><p>Run your own office under the GCI name, with our systems and team behind you.</p><ul class="p-list"><li>Operate a branded GCI office in your city</li><li>Use our proven systems &amp; university partnerships</li><li>Onboarding, training &amp; marketing support</li><li>Our processing team handles every file</li></ul><div class="p-best"><strong>Best for</strong>building a branded local presence</div></div>
 </div>
+<h3 style="font-family:var(--serif);font-weight:500;font-size:22px;color:var(--navy);text-align:center;margin:46px 0 0">Compare the two at a glance</h3>
+<div class="cmp-wrap reveal"><table class="cmp"><thead><tr><th></th><th>Business Associate</th><th>Franchise Partner</th></tr></thead><tbody>
+<tr><td>Your role</td><td>Refer &amp; counsel students</td><td>Run a branded local office</td></tr>
+<tr><td>Brand</td><td>Refer under GCI</td><td>Operate as GCI</td></tr>
+<tr><td>Office</td><td>Not required</td><td>Your own office</td></tr>
+<tr><td>Investment</td><td>None</td><td>Franchise setup (shared on a call)</td></tr>
+<tr><td>Processing &amp; visa files</td><td>Handled by GCI</td><td>Handled by GCI</td></tr>
+<tr><td>Best for</td><td>Counsellors &amp; small agents</td><td>Building a local presence</td></tr>
+</tbody></table></div>
 </div></section>
 <section class="block"><div class="wrap">
 <div class="sec-head reveal"><span class="eyebrow"><span class="rule"></span>Why GCI</span><h2>What you get as a partner.</h2></div>

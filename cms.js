@@ -65,6 +65,14 @@
   var burger = nav.querySelector('.nav-burger');
   var links = nav.querySelector('.links');
   if (!burger || !links) return;
+  /* Fix: the base site CSS hides .links with display:none on phones, which
+     blocked the menu from ever showing. Force it visible so it can expand. */
+  if (!document.getElementById('gci-navfix')) {
+    var fix = document.createElement('style');
+    fix.id = 'gci-navfix';
+    fix.textContent = '@media(max-width:880px){#nav .links{display:flex!important}}';
+    document.head.appendChild(fix);
+  }
   if (!links.querySelector('.nav-menu-cta-li')) {
     var li = document.createElement('li');
     li.className = 'nav-menu-cta-li';
@@ -80,5 +88,18 @@
       nav.classList.remove('open');
       burger.setAttribute('aria-expanded', 'false');
     }
+  });
+})();
+
+
+/* GCI mobile destination pills (shown when the globe is skipped on phones) */
+(function () {
+  var pick = document.getElementById('gpick');
+  if (!pick || pick.children.length) return; // not homepage, or globe already built pills (desktop)
+  var dest = [['Canada','canada.html'],['UK','uk.html'],['USA','usa.html'],['Australia','australia.html'],['New Zealand','new-zealand.html'],['Europe','europe.html'],['UAE','uae.html'],['Russia','russia.html'],['Singapore','singapore.html'],['Malaysia','malaysia.html'],['Mauritius','mauritius.html']];
+  dest.forEach(function (d) {
+    var a = document.createElement('a');
+    a.href = d[1]; a.textContent = d[0];
+    pick.appendChild(a);
   });
 })();

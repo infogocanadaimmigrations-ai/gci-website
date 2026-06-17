@@ -70,7 +70,7 @@
   if (!document.getElementById('gci-navfix')) {
     var fix = document.createElement('style');
     fix.id = 'gci-navfix';
-    fix.textContent = '@media(max-width:880px){#nav .links{display:flex!important}}';
+    fix.textContent = '@media(max-width:880px){#nav .links{display:flex!important}.svc-grid{grid-template-columns:1fr!important}.svc h4{font-size:22px;line-height:1.3}}';
     document.head.appendChild(fix);
   }
   if (!links.querySelector('.nav-menu-cta-li')) {

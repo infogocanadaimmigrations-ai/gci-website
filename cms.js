@@ -56,3 +56,29 @@
       .catch(function () {});
   } catch (e) {}
 })();
+
+
+/* GCI mobile nav: hamburger toggle + in-menu CTA */
+(function () {
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  var burger = nav.querySelector('.nav-burger');
+  var links = nav.querySelector('.links');
+  if (!burger || !links) return;
+  if (!links.querySelector('.nav-menu-cta-li')) {
+    var li = document.createElement('li');
+    li.className = 'nav-menu-cta-li';
+    li.innerHTML = '<a class="nav-menu-cta" href="contact.html">Book free assessment</a>';
+    links.appendChild(li);
+  }
+  burger.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('a')) {
+      nav.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();

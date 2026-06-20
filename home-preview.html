@@ -243,6 +243,38 @@ footer{background:#F3EBDD!important;border-top-color:var(--line)!important}
 .gpick button.on{background:var(--gold);color:#2A1E00;border-color:var(--gold)}
 .hero h1,.band h2,.dest-head h2,.dest-body h3,.svc h4,.stat .n,.sec-head h2,.cta-band h2,#revealText{font-weight:600}
 </style>
+<style id="theme4b">
+/* --- typography polish --- */
+.hero h1{font-size:clamp(48px,8.6vw,108px);letter-spacing:-.012em;font-weight:600;line-height:.97}
+.hero .sub{font-size:clamp(16px,1.6vw,20px);line-height:1.65}
+.eyebrow{letter-spacing:.26em;font-size:11.5px}
+.sec-head h2,.band h2,.cta-band h2,.dest-head h2{letter-spacing:.004em;font-weight:600}
+body{font-size:16.5px}
+.svc p{font-size:15px;line-height:1.7}
+/* --- engagement: buttons --- */
+.btn-red{transition:transform .2s,box-shadow .25s,background .2s}
+.btn-red:hover{transform:translateY(-2px);box-shadow:0 16px 32px -12px rgba(122,30,34,.55)}
+.btn-ghost{transition:.22s}
+.btn-ghost:hover{border-color:#7A1E22;color:#7A1E22;transform:translateY(-2px)}
+/* --- engagement: card depth --- */
+.svc{transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s,border-color .3s}
+.svc:hover{transform:translateY(-6px);box-shadow:0 28px 54px -30px rgba(122,30,34,.5);border-color:rgba(184,134,11,.45)}
+/* --- engagement: image zoom --- */
+.dest-img{transition:transform 5s ease}
+.dest-card:hover .dest-img{transform:scale(1.07)}
+.band .bg{transition:transform 6s ease}
+.band:hover .bg{transform:scale(1.05)}
+/* --- engagement: animated gold->maroon hero accent --- */
+.hero h1 .accent{background:linear-gradient(100deg,#B8860B,#7A1E22,#B8860B)!important;background-size:220% auto!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:gciShine 7s linear infinite}
+@keyframes gciShine{to{background-position:220% center}}
+/* --- engagement: nav depth + whatsapp pulse --- */
+nav.scrolled{box-shadow:0 8px 28px -16px rgba(42,38,34,.3)}
+#gci-wa{animation:gciPulse 2.8s ease-in-out infinite}
+@keyframes gciPulse{0%,100%{box-shadow:0 10px 26px -6px rgba(0,0,0,.4)}50%{box-shadow:0 10px 26px -6px rgba(0,0,0,.4),0 0 0 9px rgba(37,211,102,.13)}}
+/* --- subtle section heading accent rule --- */
+.sec-head h2::after{content:"";display:block;width:54px;height:3px;margin-top:16px;border-radius:2px;background:linear-gradient(90deg,#7A1E22,#B8860B)}
+.sec-head[style*="text-align:center"] h2::after,.sec-head.center h2::after{margin-left:auto;margin-right:auto}
+</style>
 </head><body><div class="aurora"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div><div class="vignette"></div><div class="progress" id="progress"></div><div class="preview-badge">Preview build · placeholder text · AI imagery</div><div class="stage"><nav id="nav"><div class="wrap"><a href="index.html"><img class="logo" src="logo-dark.png" alt="Go Canada Immigrations"></a><ul class="links"><li><a class="active" href="index.html">Home</a></li><li><a class="" href="destinations.html">Destinations</a></li><li><a class="" href="services.html">Services</a></li><li><a class="" href="about.html">About</a></li><li><a class="" href="success.html">Success</a></li><li><a class="" href="blog.html">Blog</a></li><li><a class="" href="partners.html">Partners</a></li><li><a class="" href="contact.html">Contact</a></li></ul><div class="nav-right"><a class="nav-call" href="portal.html">Student login</a><a class="btn-red" href="contact.html">Book free assessment</a><button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></div></div></nav>
 <header class="hero"><div class="hero-wrap">
   <div class="hero-content" id="heroContent">
@@ -376,21 +408,21 @@ footer{background:#F3EBDD!important;border-top-color:var(--line)!important}
   function ll(lat,lng,r){var phi=(90-lat)*Math.PI/180,th=(lng+180)*Math.PI/180;return new THREE.Vector3(-r*Math.sin(phi)*Math.cos(th),r*Math.cos(phi),r*Math.sin(phi)*Math.sin(th));}
   var globe=new THREE.Group();scene.add(globe);
   var VS=`varying vec2 vUv;varying vec3 vN;varying vec3 vV;void main(){vUv=uv;vN=normalize(normalMatrix*normal);vec4 mv=modelViewMatrix*vec4(position,1.0);vV=normalize(-mv.xyz);gl_Position=projectionMatrix*mv;}`;
-  var FS=`uniform sampler2D map;uniform float hasMap;varying vec2 vUv;varying vec3 vN;varying vec3 vV;void main(){vec3 tx=texture2D(map,vUv).rgb;float l=max(max(tx.r,tx.g),tx.b);float land=smoothstep(0.045,0.14,l)*hasMap;vec3 ocean=vec3(0.04,0.08,0.16);vec3 landc=vec3(0.30,0.45,0.72);vec3 col=mix(ocean,landc,land);float fres=pow(1.0-max(dot(normalize(vN),normalize(vV)),0.0),3.0);col+=vec3(0.10,0.30,0.70)*fres;gl_FragColor=vec4(col,1.0);}`;
+  var FS=`uniform sampler2D map;uniform float hasMap;varying vec2 vUv;varying vec3 vN;varying vec3 vV;void main(){vec3 tx=texture2D(map,vUv).rgb;float l=max(max(tx.r,tx.g),tx.b);float land=smoothstep(0.045,0.14,l)*hasMap;vec3 ocean=vec3(0.42,0.11,0.12);vec3 landc=vec3(0.87,0.69,0.32);vec3 col=mix(ocean,landc,land);float fres=pow(1.0-max(dot(normalize(vN),normalize(vV)),0.0),3.0);col+=vec3(0.60,0.40,0.12)*fres;gl_FragColor=vec4(col,1.0);}`;
   var u={map:{value:DOT},hasMap:{value:0.0}};
   globe.add(new THREE.Mesh(new THREE.SphereGeometry(R,64,64),new THREE.ShaderMaterial({uniforms:u,vertexShader:VS,fragmentShader:FS})));
   new THREE.TextureLoader().load('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-dark.jpg',function(t){u.map.value=t;u.hasMap.value=1.0;});
-  globe.add(new THREE.Mesh(new THREE.SphereGeometry(R*1.002,36,24),new THREE.MeshBasicMaterial({color:0x3a6fc0,wireframe:true,transparent:true,opacity:.06})));
-  (function(){var s=256,c=document.createElement('canvas');c.width=c.height=s;var x=c.getContext('2d');var g=x.createRadialGradient(s/2,s/2,s*0.34,s/2,s/2,s/2);g.addColorStop(0,'rgba(70,130,230,.5)');g.addColorStop(.5,'rgba(40,90,180,.15)');g.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=g;x.fillRect(0,0,s,s);var t=new THREE.Texture(c);t.needsUpdate=true;var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));sp.scale.set(R*3.4,R*3.4,1);scene.add(sp);})();
+  globe.add(new THREE.Mesh(new THREE.SphereGeometry(R*1.002,36,24),new THREE.MeshBasicMaterial({color:0xC79A3A,wireframe:true,transparent:true,opacity:.08})));
+  (function(){var s=256,c=document.createElement('canvas');c.width=c.height=s;var x=c.getContext('2d');var g=x.createRadialGradient(s/2,s/2,s*0.34,s/2,s/2,s/2);g.addColorStop(0,'rgba(184,134,11,.40)');g.addColorStop(.5,'rgba(122,30,34,.12)');g.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=g;x.fillRect(0,0,s,s);var t=new THREE.Texture(c);t.needsUpdate=true;var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));sp.scale.set(R*3.4,R*3.4,1);scene.add(sp);})();
   var origin={lat:30.9,lng:75.85};
   var dests=[{n:"Canada",lat:43.65,lng:-79.38},{n:"UK",lat:51.5,lng:-0.12},{n:"USA",lat:40.71,lng:-74.0},{n:"Australia",lat:-33.87,lng:151.21},{n:"New Zealand",lat:-36.85,lng:174.76},{n:"Europe",lat:53.34,lng:-6.26},{n:"UAE",lat:25.20,lng:55.27},{n:"Russia",lat:55.75,lng:37.62},{n:"Singapore",lat:1.29,lng:103.85},{n:"Malaysia",lat:3.14,lng:101.69},{n:"Mauritius",lat:-20.16,lng:57.50}];
   var destURL={Canada:"canada.html",UK:"uk.html",USA:"usa.html",Australia:"australia.html","New Zealand":"new-zealand.html",Europe:"europe.html",UAE:"uae.html",Russia:"russia.html",Singapore:"singapore.html",Malaysia:"malaysia.html",Mauritius:"mauritius.html"};
   function destLink(i){return (destURL[dests[i].n]||"destinations.html");}
   function go(i){if(i>=0)window.location.href=destLink(i);}
   function glow(color,sz){var g=new THREE.Group();g.add(new THREE.Mesh(new THREE.SphereGeometry(sz,16,16),new THREE.MeshBasicMaterial({color:color})));var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:DOT,color:color,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));sp.scale.set(sz*7,sz*7,1);g.add(sp);return g;}
-  var oPos=ll(origin.lat,origin.lng,R*1.01);var oM=glow(0xD82127,0.07);oM.position.copy(oPos);globe.add(oM);
+  var oPos=ll(origin.lat,origin.lng,R*1.01);var oM=glow(0x9A2520,0.075);oM.position.copy(oPos);globe.add(oM);
   var pins=[],pinMesh=[];
-  dests.forEach(function(dd,i){var end=ll(dd.lat,dd.lng,R*1.01);var mid=oPos.clone().add(end).multiplyScalar(.5);var lift=1.3+oPos.distanceTo(end)*0.16;mid.normalize().multiplyScalar(R*lift);var curve=new THREE.QuadraticBezierCurve3(oPos.clone(),mid,end.clone());globe.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(50)),new THREE.LineBasicMaterial({color:0xFFC93C,transparent:true,opacity:.22})));var m=glow(0xFFC93C,0.028);m.position.copy(end);m.children[0].userData={i:i};globe.add(m);pins.push(m);pinMesh.push(m.children[0]);
+  dests.forEach(function(dd,i){var end=ll(dd.lat,dd.lng,R*1.01);var mid=oPos.clone().add(end).multiplyScalar(.5);var lift=1.3+oPos.distanceTo(end)*0.16;mid.normalize().multiplyScalar(R*lift);var curve=new THREE.QuadraticBezierCurve3(oPos.clone(),mid,end.clone());globe.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(50)),new THREE.LineBasicMaterial({color:0x7A1E22,transparent:true,opacity:.36})));var m=glow(0xB8860B,0.030);m.position.copy(end);m.children[0].userData={i:i};globe.add(m);pins.push(m);pinMesh.push(m.children[0]);
     var b=document.createElement('button');b.textContent=dd.n;b.setAttribute('data-i',i);pickEl.appendChild(b);});
   pickEl.addEventListener('click',function(e){var b=e.target.closest('button');if(b)go(parseInt(b.getAttribute('data-i')));});
   var targetQ=new THREE.Quaternion();(function(){var p=ll(origin.lat,origin.lng,1).normalize();targetQ.setFromUnitVectors(p,new THREE.Vector3(0,0,1));})();

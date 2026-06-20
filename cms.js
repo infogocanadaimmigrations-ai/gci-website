@@ -92,6 +92,25 @@
 })();
 
 
+/* GCI floating WhatsApp button (all pages) */
+(function () {
+  if (document.getElementById('gci-wa')) return;
+  var num = '918968465555';
+  var msg = encodeURIComponent("Hi GCI, I'd like to know more about studying abroad.");
+  var a = document.createElement('a');
+  a.id = 'gci-wa';
+  a.href = 'https://wa.me/' + num + '?text=' + msg;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.setAttribute('aria-label', 'Chat with GCI on WhatsApp');
+  a.innerHTML = '<svg width="30" height="30" viewBox="0 0 32 32" fill="#fff" aria-hidden="true"><path d="M16.04 4C9.93 4 4.98 8.95 4.98 15.06c0 1.95.51 3.85 1.48 5.53L4.9 27l6.6-1.73a11 11 0 0 0 4.54.98h.01c6.11 0 11.06-4.95 11.06-11.06C27.11 8.95 22.15 4 16.04 4Zm0 20.2h-.01a9.1 9.1 0 0 1-4.64-1.27l-.33-.2-3.92 1.03 1.05-3.82-.22-.34a9.13 9.13 0 0 1-1.4-4.87c0-5.05 4.11-9.16 9.17-9.16 2.45 0 4.75.96 6.48 2.69a9.1 9.1 0 0 1 2.68 6.48c0 5.06-4.11 9.16-9.16 9.16Zm5.03-6.86c-.28-.14-1.63-.8-1.88-.9-.25-.09-.43-.14-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.6.07-.28-.14-1.16-.43-2.21-1.36-.82-.73-1.37-1.62-1.53-1.9-.16-.27-.02-.42.12-.56.13-.13.28-.32.41-.48.14-.16.18-.27.28-.46.09-.18.05-.34-.02-.48-.07-.14-.62-1.5-.85-2.05-.22-.53-.45-.46-.62-.47l-.53-.01c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3 0 1.36.98 2.66 1.12 2.85.14.18 1.94 2.96 4.7 4.15.66.28 1.17.45 1.56.58.66.21 1.26.18 1.73.11.53-.08 1.63-.67 1.86-1.31.23-.64.23-1.19.16-1.31-.07-.12-.25-.18-.53-.32Z"/></svg>';
+  var s = document.createElement('style');
+  s.textContent = '#gci-wa{position:fixed;right:20px;bottom:20px;z-index:90;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px -6px rgba(0,0,0,.45);transition:transform .2s,box-shadow .2s;text-decoration:none}#gci-wa:hover{transform:scale(1.07);box-shadow:0 14px 32px -6px rgba(0,0,0,.55)}@media(max-width:880px){#gci-wa{right:16px;bottom:16px;width:52px;height:52px}}';
+  (document.body || document.documentElement).appendChild(s);
+  document.body.appendChild(a);
+})();
+
+
 /* GCI mobile destination pills (shown when the globe is skipped on phones) */
 (function () {
   var pick = document.getElementById('gpick');

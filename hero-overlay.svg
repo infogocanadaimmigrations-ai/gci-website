@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Flight path overlay">
+  <defs>
+    <filter id="g" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="5"/></filter>
+  </defs>
+  <path d="M150,560 Q760,170 1300,238" fill="none" stroke="#7a1e22" stroke-width="6" stroke-linecap="round" opacity="0.30" filter="url(#g)"/>
+  <path d="M150,560 Q760,170 1300,238" fill="none" stroke="#f3c878" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round" opacity="0.95"/>
+  <circle cx="150" cy="560" r="9" fill="#f3c878" opacity="0.35" filter="url(#g)"/>
+  <circle cx="150" cy="560" r="6" fill="#ffe6ab"/>
+  <g transform="translate(1300,238) rotate(-16)">
+    <path d="M0,0 L-34,12 L-23,0 L-34,-12 Z" fill="#fff3da"/>
+  </g>
+</svg>

@@ -90,12 +90,12 @@ section.block{padding:clamp(64px,11vh,130px) 0; position:relative}
 .card h4{font-family:var(--serif); font-size:22px; font-weight:500; margin-bottom:8px}
 .card p{color:#6B5E50; font-size:14.5px} .light .card p{color:var(--muted2)}
 .destinations{position:relative}
-.dest-sticky{position:sticky; top:0; height:100vh; overflow:hidden; display:flex; align-items:center}
+.dest-sticky{position:sticky; top:0; height:100vh; overflow:hidden; display:flex; align-items:flex-end}
 .dest-head{position:absolute; top:clamp(72px,12vh,118px); left:clamp(20px,5vw,60px); z-index:5}
 .dest-head h2{font-family:var(--serif); font-weight:400; font-size:clamp(26px,3.4vw,44px); margin-top:10px}
-.dest-track{display:flex; gap:26px; padding:0 clamp(20px,5vw,60px); width:max-content; will-change:transform}
-.dest-card{width:clamp(300px,32vw,430px); height:64vh; border:1px solid var(--line); border-radius:18px; overflow:hidden; display:flex; flex-direction:column; background:rgba(247,243,236,.03); text-decoration:none}
-.dest-img{position:relative; flex:1; background-size:cover; background-position:center; display:flex; align-items:flex-start; justify-content:space-between; padding:20px}
+.dest-track{display:flex; gap:26px; padding:0 clamp(20px,5vw,60px) 7vh; width:max-content; will-change:transform}
+.dest-card{width:clamp(300px,32vw,430px); height:60vh; border:1px solid var(--line); border-radius:18px; overflow:hidden; display:flex; flex-direction:column; background:rgba(247,243,236,.03); text-decoration:none}
+.dest-img{position:relative; flex:0 0 60%; background-size:cover; background-position:center; display:flex; align-items:flex-start; justify-content:space-between; padding:20px}
 .dest-img::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(11,29,58,.05),rgba(11,29,58,.65))}
 .dest-index{position:relative; z-index:2; font-family:var(--serif); font-size:18px; color:#fff; font-weight:500; text-shadow:0 1px 6px rgba(0,0,0,.5)}
 .dest-flag{position:relative; z-index:2; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#fff; text-shadow:0 1px 6px rgba(0,0,0,.5)}
@@ -118,7 +118,7 @@ section.block{padding:clamp(64px,11vh,130px) 0; position:relative}
 .stat .l{color:var(--muted); font-size:13.5px; margin-top:6px} .light .stat .l{color:var(--muted2)}
 .manifesto{position:relative; height:210vh}
 .mani-sticky{position:sticky; top:0; height:100vh; display:flex; align-items:center; padding:0 clamp(20px,6vw,120px)}
-.reveal-text{font-family:var(--serif); font-weight:400; font-size:clamp(28px,4.6vw,58px); line-height:1.22; max-width:18ch}
+.reveal-text{font-family:var(--serif); font-weight:400; font-size:clamp(28px,4.6vw,58px); line-height:1.22; max-width:22ch; margin:0 auto; text-align:center}
 .reveal-text .word{color:var(--muted); opacity:.16}
 .process{display:grid; grid-template-columns:repeat(4,1fr); gap:24px}
 .step .num{font-family:var(--serif); font-size:42px; color:var(--red); font-weight:600}
@@ -240,7 +240,7 @@ nav.scrolled{background:rgba(251,247,239,.93)!important;border-bottom-color:var(
 .light{background-color:#F3EBDD!important;color:#2A2622!important;background-image:radial-gradient(rgba(122,30,34,.07) 1.3px,transparent 1.7px)!important;background-size:22px 22px!important}
 footer{background:#F3EBDD!important;border-top-color:var(--line)!important}
 .band{color:#FBF7EF}
-.band .ov{background:linear-gradient(90deg,rgba(40,20,18,.66),rgba(40,20,18,.10))!important}
+.band .ov{background:linear-gradient(90deg,rgba(40,20,18,.84),rgba(40,20,18,.34))!important}
 .band .slideshow{position:absolute;inset:0;overflow:hidden}
 .band .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;filter:saturate(1.08) contrast(1.03);animation:bandSlide 26s infinite;will-change:opacity,transform}
 .band .slide:nth-child(2){animation-delay:6.5s}
@@ -365,7 +365,7 @@ nav.scrolled{box-shadow:0 8px 28px -16px rgba(42,38,34,.3)}
   </div>
 </div></section>
 
-<section class="band"><div class="bg" style="background-image:url('assets/img/4589032763.jpg')"></div><div class="ov"></div><div class="wrap"><div class="reveal" style="max-width:60ch"><blockquote style="font-family:var(--serif);font-weight:400;font-size:clamp(24px,3.2vw,40px);line-height:1.25">"Honest about your chances from day one — then we build the application that gets you to the <span style="color:var(--gold);font-style:italic">right campus</span>."</blockquote><cite style="display:block;margin-top:18px;font-style:normal;color:var(--muted)">— Go Canada Immigrations</cite></div></div></section>
+<section class="band"><div class="bg" style="background-image:url('assets/img/4589032763.jpg')"></div><div class="ov"></div><div class="wrap"><div class="reveal" style="max-width:60ch"><blockquote style="font-family:var(--serif);font-weight:400;font-size:clamp(24px,3.2vw,40px);line-height:1.25">"Honest about your chances from day one — then we build the application that gets you to the <span style="color:var(--gold);font-style:italic">right campus</span>."</blockquote><cite style="display:block;margin-top:18px;font-style:normal;color:#EBD6A6;text-shadow:0 1px 8px rgba(0,0,0,.45)">— Go Canada Immigrations</cite></div></div></section>
 
 <section class="block"><div class="wrap"><div class="cta-band reveal"><span class="cta-eyebrow"><i></i>Your move</span><h2>Your seat is <span class="accent">waiting</span>.</h2><p>One honest conversation maps your whole path abroad. No fees, no pressure — just clarity.</p><a class="btn-red" href="contact.html">Book a free assessment →</a></div></div></section>
 <footer><div class="wrap"><div><img class="logo" src="logo-dark.png" alt="Go Canada Immigrations"><p style="margin-top:8px;max-width:34ch">Honest study-abroad and visa guidance from Ludhiana to the world.</p></div><div class="col"><h5>Explore</h5><a href="destinations.html">Destinations</a><a href="services.html">Services</a><a href="about.html">About</a><a href="success.html">Success stories</a><a href="portal.html">Student portal</a><a href="blog.html">Blog</a><a href="partners.html">Become a partner</a></div><div class="col"><h5>Resources</h5><a href="tools.html">Free tools</a><a href="resources.html">Free guides</a><a href="scholarships.html">Scholarships</a><a href="events.html">Events &amp; webinars</a><a href="faq.html">FAQ</a></div><div class="col"><h5>Contact</h5><a href="tel:+918968465555" data-cms-href="contact.phone1_link" data-cms-phones>89684-65555 · 78892-73599</a><a href="mailto:info.gocanadaimmigrations@gmail.com" data-cms-href="contact.email" data-cms-text="contact.email">info.gocanadaimmigrations@gmail.com</a><a href="#" data-cms-text="contact.address">1st Floor, 305, ESI Hospital Rd, Kochar Market, New Model Town, Jawaharnagar, Ludhiana</a><a href="#">www.gocanadaimmigrations.com</a></div></div><div class="foot-bottom"><div class="wrap"><span>© 2026 GCI Global Pathways Pvt Ltd</span><span>Guidance only · outcomes depend on individual eligibility</span><span><a href="privacy.html" style="color:inherit;text-decoration:underline">Privacy</a> · <a href="terms.html" style="color:inherit;text-decoration:underline">Terms</a></span></div></div></footer></div><script>(function(){

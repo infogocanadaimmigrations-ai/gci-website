@@ -457,4 +457,8 @@ nav.scrolled{box-shadow:0 8px 28px -16px rgba(42,38,34,.3)}
     renderer.render(scene,camera);
   }
   animate();
-  window.addEventListener('resize',function(){var dd=size();W=dd[0];H=dd[1];camera.aspect=W/H;camera.updateProjection
+  window.addEventListener('resize',function(){var dd=size();W=dd[0];H=dd[1];camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
+  setTimeout(function(){select(0);},1000);
+})();
+</script>
+<script defer src="cms.js"></script></body></html>

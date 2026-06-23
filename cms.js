@@ -70,7 +70,7 @@
   if (!document.getElementById('gci-navfix')) {
     var fix = document.createElement('style');
     fix.id = 'gci-navfix';
-    fix.textContent = 'body{background-image:none!important}.light{background-image:none!important}.ic{display:flex!important;align-items:center!important;justify-content:center!important}.ic svg{width:24px;height:24px;display:block}.svc p{font-size:15px;line-height:1.72}.svc h4{margin-bottom:11px}@media(max-width:880px){#nav .links{display:flex!important;background:#FBF7EF!important;border-bottom-color:rgba(42,38,34,.14)!important;box-shadow:0 18px 40px -16px rgba(42,38,34,.3)!important}#nav .links a{color:#2A2622!important;opacity:1!important;font-weight:600;padding:15px 24px;border-bottom:1px solid rgba(42,38,34,.08)}#nav .links a.active{color:#7A1E22!important}#nav .links a::after{display:none!important}#nav .nav-menu-cta{background:#7A1E22!important;color:#fff!important;font-weight:700}.svc-grid{grid-template-columns:1fr!important}.svc h4{font-size:22px;line-height:1.3}}';
+    fix.textContent = 'body{background-image:none!important}.light{background-image:none!important}.ic{display:flex!important;align-items:center!important;justify-content:center!important}.ic svg{width:24px;height:24px;display:block}.svc p{font-size:15px;line-height:1.72}.svc h4{margin-bottom:11px}@media(max-width:880px){#nav .links{display:flex!important;background:#FBF7EF!important;border-bottom-color:rgba(42,38,34,.14)!important;box-shadow:0 18px 40px -16px rgba(42,38,34,.3)!important}#nav .links a{color:#2A2622!important;opacity:1!important;font-weight:600;padding:15px 24px;border-bottom:1px solid rgba(42,38,34,.08)}#nav .links a.active{color:#7A1E22!important}#nav .links a::after{display:none!important}#nav .nav-menu-cta{background:#7A1E22!important;color:#fff!important;font-weight:700}.svc-grid{grid-template-columns:1fr!important}.svc h4{font-size:22px;line-height:1.3}}.uni-wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}.uni-wall .ucard{background:#fff;border:1px solid rgba(42,38,34,.14);border-radius:12px;height:84px;display:flex;align-items:center;justify-content:center;padding:14px;text-align:center;box-shadow:0 10px 24px -20px rgba(42,38,34,.5)}.uni-wall .ucard img{max-height:54px;max-width:100%;object-fit:contain;display:block}.uni-wall .ucard span{font-family:var(--serif);font-size:14px;color:#2A2622;line-height:1.25;font-weight:600}.strip .names .ulogo{display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid rgba(42,38,34,.1);border-radius:8px;padding:5px 12px;margin:0 5px;vertical-align:middle}.strip .names .ulogo img{height:22px;width:auto;object-fit:contain;display:block}@media(max-width:600px){.uni-wall{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}.uni-wall .ucard{height:72px}}';
     document.head.appendChild(fix);
   }
   if (!links.querySelector('.nav-menu-cta-li')) {
@@ -121,4 +121,23 @@
     a.href = d[1]; a.textContent = d[0];
     pick.appendChild(a);
   });
+})();
+
+
+/* GCI footer social links (Facebook + Instagram) */
+(function () {
+  var ft = document.querySelector('footer');
+  if (!ft || document.getElementById('gci-social')) return;
+  var col = ft.querySelector('.wrap > div') || ft.querySelector('.wrap') || ft;
+  var FB = 'https://www.facebook.com/profile.php?id=100090483048177';
+  var IG = 'https://www.instagram.com/gocanadaimmigrations_2?igsh=OHg4c2szYWhvYjJx';
+  var wrap = document.createElement('div');
+  wrap.id = 'gci-social';
+  wrap.style.cssText = 'display:flex;gap:12px;align-items:center;margin-top:16px';
+  var fb = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>';
+  var ig = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>';
+  wrap.innerHTML =
+    '<a href="' + FB + '" target="_blank" rel="noopener" aria-label="Go Canada Immigrations on Facebook" style="display:inline-flex;width:38px;height:38px;align-items:center;justify-content:center;border:1px solid rgba(42,38,34,.18);border-radius:10px;color:#7A1E22;text-decoration:none;transition:.2s">' + fb + '</a>' +
+    '<a href="' + IG + '" target="_blank" rel="noopener" aria-label="Go Canada Immigrations on Instagram" style="display:inline-flex;width:38px;height:38px;align-items:center;justify-content:center;border:1px solid rgba(42,38,34,.18);border-radius:10px;color:#7A1E22;text-decoration:none;transition:.2s">' + ig + '</a>';
+  col.appendChild(wrap);
 })();

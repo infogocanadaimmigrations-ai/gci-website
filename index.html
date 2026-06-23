@@ -90,10 +90,10 @@ section.block{padding:clamp(64px,11vh,130px) 0; position:relative}
 .card h4{font-family:var(--serif); font-size:22px; font-weight:500; margin-bottom:8px}
 .card p{color:#6B5E50; font-size:14.5px} .light .card p{color:var(--muted2)}
 .destinations{position:relative}
-.dest-sticky{position:sticky; top:0; height:100vh; overflow:hidden; display:flex; align-items:flex-end}
-.dest-head{position:absolute; top:clamp(72px,12vh,118px); left:clamp(20px,5vw,60px); z-index:5}
+.dest-sticky{position:sticky; top:0; height:100vh; overflow:hidden; display:flex; align-items:flex-start}
+.dest-head{position:absolute; top:clamp(48px,8vh,84px); left:clamp(20px,5vw,60px); right:clamp(20px,5vw,60px); z-index:5}
 .dest-head h2{font-family:var(--serif); font-weight:400; font-size:clamp(26px,3.4vw,44px); margin-top:10px}
-.dest-track{display:flex; gap:26px; padding:0 clamp(20px,5vw,60px) 7vh; width:max-content; will-change:transform}
+.dest-track{display:flex; gap:26px; padding:clamp(170px,29vh,240px) clamp(20px,5vw,60px) 0; width:max-content; will-change:transform}
 .dest-card{width:clamp(300px,32vw,430px); height:60vh; border:1px solid var(--line); border-radius:18px; overflow:hidden; display:flex; flex-direction:column; background:rgba(247,243,236,.03); text-decoration:none}
 .dest-img{position:relative; flex:0 0 60%; background-size:cover; background-position:center; display:flex; align-items:flex-start; justify-content:space-between; padding:20px}
 .dest-img::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(11,29,58,.22),rgba(11,29,58,0) 32%)}
@@ -305,7 +305,7 @@ nav.scrolled{box-shadow:0 8px 28px -16px rgba(42,38,34,.3)}
   </div>
 </div><div class="scrollcue"><span>SCROLL</span><span class="bar"></span></div></header>
 
-<div class="strip"><div class="wrap"><span>Pathways to</span><span class="names"><span>Toronto</span><span>UBC</span><span>Monash</span><span>Manchester</span><span>Trinity</span></span></div></div>
+<div class="strip"><div class="wrap"><span>Pathways to</span><span class="names"><span>Durham University</span><span>University of Leeds</span><span>Simon Fraser University</span><span>Deakin University</span><span>University of Wollongong</span><span>Dalhousie University</span></span></div></div>
 
 <section class="band"><div class="slideshow"><div class="slide" style="background-image:url('assets/img/4589032520.jpg')"></div><div class="slide" style="background-image:url('assets/img/4589033233.jpg')"></div><div class="slide" style="background-image:url('assets/img/4590784237.jpg')"></div><div class="slide" style="background-image:url('assets/img/4590784311.jpg')"></div></div><div class="ov"></div><div class="band-fx" aria-hidden="true"><i style="left:8%;width:6px;height:6px;animation-duration:11s;animation-delay:0s"></i><i style="left:15%;width:4px;height:4px;animation-duration:14s;animation-delay:2s"></i><i style="left:23%;width:7px;height:7px;animation-duration:9s;animation-delay:1s"></i><i style="left:32%;width:5px;height:5px;animation-duration:13s;animation-delay:4s"></i><i style="left:40%;width:4px;height:4px;animation-duration:16s;animation-delay:3s"></i><i style="left:49%;width:8px;height:8px;animation-duration:10s;animation-delay:6s"></i><i style="left:57%;width:5px;height:5px;animation-duration:12s;animation-delay:2s"></i><i style="left:66%;width:6px;height:6px;animation-duration:15s;animation-delay:5s"></i><i style="left:74%;width:4px;height:4px;animation-duration:11s;animation-delay:8s"></i><i style="left:82%;width:7px;height:7px;animation-duration:9s;animation-delay:3s"></i><i style="left:90%;width:5px;height:5px;animation-duration:14s;animation-delay:7s"></i><i style="left:95%;width:4px;height:4px;animation-duration:12s;animation-delay:10s"></i></div><div class="wrap"><div class="reveal"><span class="eyebrow"><span class="rule"></span>Ludhiana to the world</span><h2 style="margin-top:14px">One honest conversation can change the entire course of your life.</h2></div></div></section>
 
@@ -324,7 +324,7 @@ nav.scrolled{box-shadow:0 8px 28px -16px rgba(42,38,34,.3)}
 </div></div></section>
 
 <section class="destinations" id="dest"><div class="dest-sticky">
-  <div class="dest-head"><span class="eyebrow"><span class="rule"></span>Destinations</span><h2>Where will you go?</h2><p class="dest-sub">11 countries · 600+ partner universities — drag to explore.</p></div>
+  <div class="dest-head"><span class="eyebrow"><span class="rule"></span>Destinations</span><h2>Where will you go?</h2><p class="dest-sub">11 countries · 500+ partner universities</p></div>
   <div class="dest-track" id="destTrack">
     <a class="dest-card" href="canada.html"><div class="dest-img" style="background-image:url('assets/img/4589032763.jpg')"><span class="dest-index">01</span><span class="dest-flag">Flagship</span></div><div class="dest-body"><h3>Canada</h3><p>Study, work, settle — our home turf, start to PR.</p><span class="dest-link">Explore pathways →</span></div></a>
     <a class="dest-card" href="australia.html"><div class="dest-img" style="background-image:url('assets/img/4589032777.jpg')"><span class="dest-index">02</span><span class="dest-flag">Oceania</span></div><div class="dest-body"><h3>Australia</h3><p>World-top universities and a strong stay-back.</p><span class="dest-link">Explore pathways →</span></div></a>
@@ -344,10 +344,10 @@ nav.scrolled{box-shadow:0 8px 28px -16px rgba(42,38,34,.3)}
 <section class="block light"><div class="wrap">
   <div class="sec-head reveal"><span class="eyebrow"><span class="rule"></span>The numbers families trust</span><h2>A record you can check.</h2></div>
   <div class="stats-grid">
-    <div class="stat reveal"><div class="n" data-target="11000">0</div><div class="l">Students placed</div></div>
-    <div class="stat reveal"><div class="n" data-target="40"><span>+</span></div><div class="l">Partner universities</div></div>
+    <div class="stat reveal"><div class="n" data-target="11">0</div><div class="l">Countries we place in</div></div>
+    <div class="stat reveal"><div class="n" data-target="500"><span>+</span></div><div class="l">Partner universities &amp; colleges</div></div>
     <div class="stat reveal"><div class="n"><span>~</span><span data-target="98">0</span><span>%</span></div><div class="l">Visa success rate</div></div>
-    <div class="stat reveal"><div class="n" data-target="12">0</div><div class="l">Years guiding families</div></div>
+    <div class="stat reveal"><div class="n" data-target="5">0</div><div class="l">Years guiding families</div></div>
   </div>
 </div></section>
 

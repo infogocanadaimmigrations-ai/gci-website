@@ -401,9 +401,9 @@ nav.scrolled{box-shadow:0 8px 28px -16px rgba(42,38,34,.3)}
   setup();update();
 })();
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>(function(){if(!matchMedia("(min-width:881px)").matches)return;addEventListener("load",function(){var s=document.createElement("script");s.src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";s.onload=function(){if(window.__initGlobe)window.__initGlobe();};document.head.appendChild(s);});})();</script>
 <script>
-(function(){
+window.__initGlobe=function(){
   if(!window.THREE)return;if(window.matchMedia&&window.matchMedia('(max-width:880px)').matches)return;
   var wrap=document.querySelector('.gcanvas-wrap'),cv=document.getElementById('gc'),pickEl=document.getElementById('gpick'),labEl=document.getElementById('glabel');
   labEl.addEventListener('click',function(){go(parseInt(labEl.dataset.i));});
@@ -459,6 +459,6 @@ nav.scrolled{box-shadow:0 8px 28px -16px rgba(42,38,34,.3)}
   animate();
   window.addEventListener('resize',function(){var dd=size();W=dd[0];H=dd[1];camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
   setTimeout(function(){select(0);},1000);
-})();
+};
 </script>
 <script defer src="cms.js"></script></body></html>

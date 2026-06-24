@@ -70,7 +70,7 @@
   if (!document.getElementById('gci-navfix')) {
     var fix = document.createElement('style');
     fix.id = 'gci-navfix';
-    fix.textContent = 'body{background-image:none!important}.light{background-image:none!important}.ic{display:flex!important;align-items:center!important;justify-content:center!important}.ic svg{width:24px;height:24px;display:block}.svc p{font-size:15px;line-height:1.72}.svc h4{margin-bottom:11px}@media(max-width:880px){#nav .links{display:flex!important;background:#FBF7EF!important;border-bottom-color:rgba(42,38,34,.14)!important;box-shadow:0 18px 40px -16px rgba(42,38,34,.3)!important}#nav .links a{color:#2A2622!important;opacity:1!important;font-weight:600;padding:15px 24px;border-bottom:1px solid rgba(42,38,34,.08)}#nav .links a.active{color:#7A1E22!important}#nav .links a::after{display:none!important}#nav .nav-menu-cta{background:#7A1E22!important;color:#fff!important;font-weight:700}.svc-grid{grid-template-columns:1fr!important}.svc h4{font-size:22px;line-height:1.3}}.uni-wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}.uni-wall .ucard{background:#fff;border:1px solid rgba(42,38,34,.14);border-radius:12px;height:84px;display:flex;align-items:center;justify-content:center;padding:14px;text-align:center;box-shadow:0 10px 24px -20px rgba(42,38,34,.5)}.uni-wall .ucard img{max-height:54px;max-width:100%;object-fit:contain;display:block}.uni-wall .ucard span{font-family:var(--serif);font-size:14px;color:#2A2622;line-height:1.25;font-weight:600}.strip .names .ulogo{display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid rgba(42,38,34,.12);border-radius:10px;padding:7px 12px;box-shadow:0 6px 16px -12px rgba(42,38,34,.5)}@media(max-width:760px){.strip .names{flex-wrap:wrap!important;justify-content:center}}.strip .names{gap:12px!important;align-items:center;flex-wrap:nowrap}.strip .names .ulogo img{height:30px;width:auto;max-width:130px;object-fit:contain;display:block}@media(max-width:600px){.uni-wall{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}.uni-wall .ucard{height:72px}}';
+    fix.textContent = 'body{background-image:none!important}.light{background-image:none!important}.ic{display:flex!important;align-items:center!important;justify-content:center!important}.ic svg{width:24px;height:24px;display:block}.svc p{font-size:15px;line-height:1.72}.svc h4{margin-bottom:11px}@media(max-width:880px){#nav .links{display:flex!important;background:#FBF7EF!important;border-bottom-color:rgba(42,38,34,.14)!important;box-shadow:0 18px 40px -16px rgba(42,38,34,.3)!important}#nav .links a{color:#2A2622!important;opacity:1!important;font-weight:600;padding:15px 24px;border-bottom:1px solid rgba(42,38,34,.08)}#nav .links a.active{color:#7A1E22!important}#nav .links a::after{display:none!important}#nav .nav-menu-cta{background:#7A1E22!important;color:#fff!important;font-weight:700}.svc-grid{grid-template-columns:1fr!important}.svc h4{font-size:22px;line-height:1.3}}.uni-wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}.uni-wall .ucard{background:#fff;border:1px solid rgba(42,38,34,.14);border-radius:12px;height:84px;display:flex;align-items:center;justify-content:center;padding:14px;text-align:center;box-shadow:0 10px 24px -20px rgba(42,38,34,.5)}.uni-wall .ucard img{max-height:54px;max-width:100%;object-fit:contain;display:block}.uni-wall .ucard span{font-family:var(--serif);font-size:14px;color:#2A2622;line-height:1.25;font-weight:600}.strip .names .ulogo{display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid rgba(42,38,34,.12);border-radius:10px;padding:7px 12px;box-shadow:0 6px 16px -12px rgba(42,38,34,.5)}@media(max-width:760px){.strip .names{flex-wrap:wrap!important;justify-content:center}}.strip .names{gap:12px!important;align-items:center;flex-wrap:nowrap}.strip .names .ulogo img{height:30px;width:auto;max-width:130px;object-fit:contain;display:block}@media(max-width:600px){.uni-wall{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}.uni-wall .ucard{height:72px}}a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #7A1E22;outline-offset:2px;border-radius:3px}';
     document.head.appendChild(fix);
   }
   if (!links.querySelector('.nav-menu-cta-li')) {
@@ -140,4 +140,28 @@
     '<a href="' + FB + '" target="_blank" rel="noopener" aria-label="Go Canada Immigrations on Facebook" style="display:inline-flex;width:38px;height:38px;align-items:center;justify-content:center;border:1px solid rgba(42,38,34,.18);border-radius:10px;color:#7A1E22;text-decoration:none;transition:.2s">' + fb + '</a>' +
     '<a href="' + IG + '" target="_blank" rel="noopener" aria-label="Go Canada Immigrations on Instagram" style="display:inline-flex;width:38px;height:38px;align-items:center;justify-content:center;border:1px solid rgba(42,38,34,.18);border-radius:10px;color:#7A1E22;text-decoration:none;transition:.2s">' + ig + '</a>';
   col.appendChild(wrap);
+})();
+
+
+/* GCI a11y + CLS polish */
+(function () {
+  // Skip-to-content link
+  if (!document.getElementById('gci-skip')) {
+    var a = document.createElement('a');
+    a.id = 'gci-skip'; a.href = '#main'; a.textContent = 'Skip to content';
+    a.style.cssText = 'position:absolute;left:-999px;top:0;z-index:200;background:#7A1E22;color:#fff;padding:10px 16px;border-radius:0 0 10px 0;font-weight:700;text-decoration:none';
+    a.addEventListener('focus', function () { a.style.left = '0'; });
+    a.addEventListener('blur', function () { a.style.left = '-999px'; });
+    document.body.prepend(a);
+    var main = document.querySelector('.stage section, main, section');
+    if (main && !main.id) main.id = 'main';
+  }
+  // Reserve nav-logo space to prevent layout shift (logo-dark.png is 760x242)
+  document.querySelectorAll('img.logo').forEach(function (im) {
+    if (!im.getAttribute('width')) { im.setAttribute('width', '138'); im.setAttribute('height', '44'); }
+  });
+  // Lazy-load + sandbox offscreen iframes (e.g. the contact map)
+  document.querySelectorAll('iframe').forEach(function (f) {
+    if (!f.getAttribute('loading')) f.setAttribute('loading', 'lazy');
+  });
 })();

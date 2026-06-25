@@ -240,13 +240,13 @@ footer{background:#F3EBDD!important;border-top-color:var(--line)!important}
 .uk-trust .stars{color:#F4C257;letter-spacing:2px}
 .uk-lead-card{background:#FBF7EF;border-radius:16px;padding:clamp(22px,2.6vw,30px);box-shadow:0 30px 64px -22px rgba(0,0,0,.6);border:1px solid rgba(42,38,34,.1)}
 .uk-lead-card h2{font-family:var(--serif);font-weight:600;color:#2A2622;font-size:clamp(22px,2.4vw,29px);line-height:1.08;margin:0 0 4px}
-.uk-lead-card>p{color:#6B5E50;font-size:14.5px;margin:0 0 18px}
+.page-hero .uk-lead-card>p{color:#6B5E50!important;font-size:14.5px;margin:0 0 18px}
 .ukf{display:flex;flex-direction:column;gap:13px}
 .ukf label{display:flex;flex-direction:column;gap:6px;font-size:12.5px;font-weight:700;color:#2A2622;letter-spacing:.02em}
 .ukf input,.ukf select{font:inherit;font-weight:400;padding:12px 14px;border:1px solid rgba(42,38,34,.22);border-radius:10px;background:#fff;color:#2A2622}
 .ukf input:focus,.ukf select:focus{outline:2px solid #7A1E22;outline-offset:1px;border-color:#7A1E22}
 .ukf button{margin-top:4px;width:100%;justify-content:center;cursor:pointer;border:none;font-weight:700}
-.ukf-fine{font-size:12px;color:#6B5E50;text-align:center;margin:2px 0 0}
+.page-hero .uk-lead-card .ukf-fine{font-size:12px;color:#6B5E50!important;text-align:center;margin:2px 0 0}
 @media(max-width:880px){.uk-hero-grid{grid-template-columns:1fr;gap:24px}.page-hero{min-height:auto;padding-top:120px}.uk-lead-card{margin-top:4px}}
 </style>
 <section class="page-hero"><div class="ph-bg" style="background-image:url('assets/img/4589032982.webp')"></div><div class="ph-ov"></div><div class="wrap uk-hero-grid">
@@ -290,7 +290,7 @@ footer{background:#F3EBDD!important;border-top-color:var(--line)!important}
 <section class="block light"><div class="wrap">
   <div class="sec-head reveal"><span class="eyebrow"><span class="rule"></span>Quick facts</span><h2>What UK looks like with GCI.</h2></div>
   <div class="stats-grid">
-    <div class="stat reveal"><div class="n"><span data-target="10" data-cms-num="stats.uk.partners" style="color:inherit">10</span><span>+</span></div><div class="l">Partner institutions</div></div>
+    <div class="stat reveal"><div class="n"><span data-target="130" data-cms-num="stats.uk.partners" style="color:inherit">130</span><span>+</span></div><div class="l">Partner institutions</div></div>
     <div class="stat reveal"><div class="n" data-target="2" data-cms-num="stats.uk.intakes">2</div><div class="l">Intakes a year</div></div>
     <div class="stat reveal"><div class="n" style="font-size:clamp(20px,2.4vw,30px);line-height:1.5">~Rs 22–35 L / yr</div><div class="l">Tuition / yr (approx)</div></div>
     <div class="stat reveal"><div class="n" style="font-size:clamp(24px,2.8vw,34px);line-height:1.4">Free</div><div class="l">First assessment</div></div>
@@ -316,9 +316,37 @@ footer{background:#F3EBDD!important;border-top-color:var(--line)!important}
   <div class="process">
     <div class="step reveal"><div class="num">01</div><h4>Assessment</h4><p>Eligibility, budget and the right course and city.</p></div>
     <div class="step reveal"><div class="num">02</div><h4>Admission</h4><p>Applications, offer letters and fee payment.</p></div>
-    <div class="step reveal"><div class="num">03</div><h4>Visa</h4><p>SOP, documentation and a strong visa file.</p></div>
+    <div class="step reveal"><div class="num">03</div><h4>Visa support</h4><p>SOP guidance, documentation and a well-organised visa file.</p></div>
     <div class="step reveal"><div class="num">04</div><h4>Land &amp; settle</h4><p>Travel, accommodation, and your first weeks sorted.</p></div>
   </div>
+</div></section>
+
+<style>
+.uk-reviews{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;text-align:center;margin:0 auto 30px}
+.uk-stars{color:#F4A100;letter-spacing:3px;font-size:20px;line-height:1}
+.uk-reviews .uk-rev-text{color:#6B5E50;font-size:15px}
+.uk-reviews a,.uk-more a{color:#7A1E22;font-weight:700;text-decoration:none}
+.uk-tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.uk-tcard{background:#fff;border:1px solid rgba(42,38,34,.12);border-radius:16px;padding:24px;box-shadow:0 18px 40px -30px rgba(42,38,34,.5);display:flex;flex-direction:column;gap:14px;margin:0}
+.uk-tcard .uk-stars.sm{font-size:15px;letter-spacing:2px}
+.uk-tcard blockquote{margin:0;font-family:var(--serif);font-size:18px;line-height:1.45;color:#2A2622}
+.uk-tcard figcaption{display:flex;align-items:center;gap:12px;margin-top:auto}
+.uk-av{width:40px;height:40px;border-radius:50%;background:#7A1E22;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-family:var(--serif);flex:0 0 auto}
+.uk-tcard figcaption b{display:block;color:#2A2622;font-size:14.5px}
+.uk-tcard figcaption small{color:#6B5E50;font-size:12.5px}
+.uk-more{text-align:center;color:#6B5E50;font-size:13px;margin-top:18px}
+@media(max-width:880px){.uk-tgrid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}*{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+</style>
+<section class="block light"><div class="wrap">
+  <div class="sec-head reveal"><span class="eyebrow"><span class="rule"></span>Student stories</span><h2>Trusted by students &amp; families.</h2></div>
+  <div class="uk-reviews reveal"><span class="uk-stars" aria-label="5 out of 5 stars">★★★★★</span><span class="uk-rev-text">Rated five stars by our students — <a href="https://www.google.com/maps/search/?api=1&amp;query=Go%20Canada%20Immigrations%20Ludhiana" target="_blank" rel="noopener">read our Google reviews</a></span></div>
+  <div class="uk-tgrid">
+    <figure class="uk-tcard reveal"><div class="uk-stars sm" aria-hidden="true">★★★★★</div><blockquote>“Trustworthy, efficient and genuinely supportive — a consultant you can truly rely on.”</blockquote><figcaption><span class="uk-av">M</span><span><b>Manavta</b><small>University of Huddersfield · UK</small></span></figcaption></figure>
+    <figure class="uk-tcard reveal"><div class="uk-stars sm" aria-hidden="true">★★★★★</div><blockquote>“From my application to my offer, they guided every step. I always felt supported.”</blockquote><figcaption><span class="uk-av">K</span><span><b>Khushpreet</b><small>Sheridan College · Canada</small></span></figcaption></figure>
+    <figure class="uk-tcard reveal"><div class="uk-stars sm" aria-hidden="true">★★★★★</div><blockquote>“They made my admission and visa process smooth and stress-free, start to finish.”</blockquote><figcaption><span class="uk-av">A</span><span><b>Amritpal</b><small>University Canada West · Canada</small></span></figcaption></figure>
+  </div>
+  <p class="uk-more">Students placed across the UK, Canada, Australia &amp; Europe. <a href="success.html">See more stories →</a></p>
 </div></section>
 
 <section class="block"><div class="wrap"><div class="cta-band reveal"><span class="cta-eyebrow"><i></i>Your move</span><h2>Ready for <span class="accent">UK</span>?</h2><p>Book a free assessment and we will map your honest route from here to a UK campus.</p><a class="btn-red" href="contact.html">Book a free assessment →</a></div></div></section>

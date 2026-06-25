@@ -165,3 +165,38 @@
     if (!f.getAttribute('loading')) f.setAttribute('loading', 'lazy');
   });
 })();
+
+
+/* GCI sticky mobile action bar — Call + WhatsApp (ad-traffic CRO) */
+(function () {
+  if (document.getElementById('gci-mobilebar')) return;
+  var TEL = '+918968465555';
+  var WA = 'https://wa.me/918968465555?text=' + encodeURIComponent("Hi GCI, I'd like to know more about studying abroad.");
+  var s = document.createElement('style');
+  s.textContent =
+    '#gci-mobilebar{display:none}' +
+    '@media(max-width:880px){' +
+      '#gci-mobilebar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:120;' +
+        'background:#FBF7EF;border-top:1px solid rgba(42,38,34,.16);box-shadow:0 -8px 24px -12px rgba(42,38,34,.45);' +
+        'padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px))}' +
+      '#gci-mobilebar a{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 10px;margin:0 4px;' +
+        'border-radius:11px;font-weight:700;font-size:15px;text-decoration:none;line-height:1}' +
+      '#gci-mobilebar .mb-call{background:#7A1E22;color:#fff}' +
+      '#gci-mobilebar .mb-wa{background:#25D366;color:#fff}' +
+      '#gci-mobilebar svg{width:18px;height:18px;flex:0 0 auto}' +
+      'body{padding-bottom:74px!important}' +
+      '#gci-wa{display:none!important}' +
+    '}';
+  document.head.appendChild(s);
+  var bar = document.createElement('div');
+  bar.id = 'gci-mobilebar';
+  bar.setAttribute('aria-label', 'Quick contact');
+  bar.innerHTML =
+    '<a class="mb-call" href="tel:' + TEL + '" aria-label="Call GCI now">' +
+      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.1 2.2z"/></svg>' +
+      'Call now</a>' +
+    '<a class="mb-wa" href="' + WA + '" target="_blank" rel="noopener" aria-label="WhatsApp GCI">' +
+      '<svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.04 4C9.93 4 4.98 8.95 4.98 15.06c0 1.95.51 3.85 1.48 5.53L4.9 27l6.6-1.73a11 11 0 0 0 4.54.98c6.11 0 11.06-4.95 11.06-11.06C27.11 8.95 22.15 4 16.04 4Zm5.03 13.34c-.28-.14-1.63-.8-1.88-.9-.25-.09-.43-.14-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.6.07-.28-.14-1.16-.43-2.21-1.36-.82-.73-1.37-1.62-1.53-1.9-.16-.27-.02-.42.12-.56.13-.13.28-.34.41-.5.14-.18.18-.27.28-.46.09-.18.05-.34-.02-.48-.07-.14-.62-1.5-.85-2.05-.22-.53-.45-.46-.62-.47l-.53-.01c-.18 0-.48.07-.73.34s-.96.94-.96 2.3c0 1.36.98 2.66 1.12 2.85.14.18 1.94 2.96 4.7 4.15.66.28 1.17.45 1.56.58.66.21 1.26.18 1.73.11.53-.08 1.63-.67 1.86-1.31.23-.64.23-1.19.16-1.31-.07-.12-.25-.18-.53-.32Z"/></svg>' +
+      'WhatsApp</a>';
+  document.body.appendChild(bar);
+})();

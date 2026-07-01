@@ -204,3 +204,28 @@
       'WhatsApp</a>';
   document.body.appendChild(bar);
 })();
+
+
+/* GCI GA4 lead tracking: fire generate_lead on WhatsApp + phone-call clicks.
+   Delegated + capture phase so it covers every current/future tel: and
+   WhatsApp link site-wide (header, footer, contact, floating + sticky buttons). */
+(function () {
+  if (window.__gciLeadTrack) return;
+  window.__gciLeadTrack = true;
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var href = (a.getAttribute('href') || '').toLowerCase();
+    var method = null;
+    if (href.indexOf('tel:') === 0) method = 'phone_call';
+    else if (/(wa\.me|api\.whatsapp\.com|whatsapp\.com\/send)/.test(href)) method = 'whatsapp';
+    if (!method) return;
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', { method: method });
+      } else {
+        (window.dataLayer = window.dataLayer || []).push({ event: 'generate_lead', method: method });
+      }
+    } catch (err) {}
+  }, true);
+})();

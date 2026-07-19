@@ -1,0 +1,66 @@
+# Canonicalise extensionless URLs -> .html
+# Matches the canonical tags, sitemap and all 1,871 internal links.
+# Netlify serves /page for page.html by default; force (!) makes the 301 fire instead.
+# /thanks (Netlify Forms success) and /portal are intentionally excluded.
+
+/404    /404.html    301!
+/about    /about.html    301!
+/australia    /australia.html    301!
+/blog-ai-sop-authentic-2026    /blog-ai-sop-authentic-2026.html    301!
+/blog-australia-genuine-student-2026    /blog-australia-genuine-student-2026.html    301!
+/blog-australia-vs-canada-2026    /blog-australia-vs-canada-2026.html    301!
+/blog-canada-74-percent-refusal-reasons    /blog-canada-74-percent-refusal-reasons.html    301!
+/blog-canada-gic-22895-bank-guide    /blog-canada-gic-22895-bank-guide.html    301!
+/blog-canada-pal-2026-exemption    /blog-canada-pal-2026-exemption.html    301!
+/blog-canada-pgwp-2026-requirements    /blog-canada-pgwp-2026-requirements.html    301!
+/blog-canada-sds-gone-regular-stream-2026    /blog-canada-sds-gone-regular-stream-2026.html    301!
+/blog-canada-study-permit-2026    /blog-canada-study-permit-2026.html    301!
+/blog-canada-study-permit-changes-2026    /blog-canada-study-permit-changes-2026.html    301!
+/blog-canada-study-visa-fees-2026    /blog-canada-study-visa-fees-2026.html    301!
+/blog-choosing-study-visa-consultant-ludhiana    /blog-choosing-study-visa-consultant-ludhiana.html    301!
+/blog-cost-of-studying-abroad-2026    /blog-cost-of-studying-abroad-2026.html    301!
+/blog-dependent-spouse-visa-2026    /blog-dependent-spouse-visa-2026.html    301!
+/blog-education-loan-study-abroad    /blog-education-loan-study-abroad.html    301!
+/blog-how-to-write-sop    /blog-how-to-write-sop.html    301!
+/blog-ielts-pte-coaching-ludhiana-vs-self-study    /blog-ielts-pte-coaching-ludhiana-vs-self-study.html    301!
+/blog-ielts-vs-pte-vs-toefl    /blog-ielts-vs-pte-vs-toefl.html    301!
+/blog-in-demand-courses-2026    /blog-in-demand-courses-2026.html    301!
+/blog-mbbs-abroad-nmc-rules-2026    /blog-mbbs-abroad-nmc-rules-2026.html    301!
+/blog-post-study-work-pr-2026    /blog-post-study-work-pr-2026.html    301!
+/blog-proof-of-funds-2026    /blog-proof-of-funds-2026.html    301!
+/blog-proof-of-funds-gic    /blog-proof-of-funds-gic.html    301!
+/blog-punjab-study-visa-file-scrutiny    /blog-punjab-study-visa-file-scrutiny.html    301!
+/blog-scholarships-2026    /blog-scholarships-2026.html    301!
+/blog-scholarships-for-indian-students    /blog-scholarships-for-indian-students.html    301!
+/blog-study-abroad-from-ludhiana-2026    /blog-study-abroad-from-ludhiana-2026.html    301!
+/blog-study-abroad-intakes-explained    /blog-study-abroad-intakes-explained.html    301!
+/blog-study-abroad-timeline    /blog-study-abroad-timeline.html    301!
+/blog-study-gap-explain-visa-application    /blog-study-gap-explain-visa-application.html    301!
+/blog-study-visa-consultant-fees-punjab-2026    /blog-study-visa-consultant-fees-punjab-2026.html    301!
+/blog-study-visa-documents-checklist    /blog-study-visa-documents-checklist.html    301!
+/blog-uk-graduate-route-2026    /blog-uk-graduate-route-2026.html    301!
+/blog-why-study-visas-get-refused    /blog-why-study-visas-get-refused.html    301!
+/blog-work-while-studying-abroad    /blog-work-while-studying-abroad.html    301!
+/blog    /blog.html    301!
+/canada    /canada.html    301!
+/contact    /contact.html    301!
+/destinations    /destinations.html    301!
+/europe    /europe.html    301!
+/events    /events.html    301!
+/faq    /faq.html    301!
+/malaysia    /malaysia.html    301!
+/mauritius    /mauritius.html    301!
+/new-zealand    /new-zealand.html    301!
+/partners    /partners.html    301!
+/privacy    /privacy.html    301!
+/resources    /resources.html    301!
+/russia    /russia.html    301!
+/scholarships    /scholarships.html    301!
+/services    /services.html    301!
+/singapore    /singapore.html    301!
+/success    /success.html    301!
+/terms    /terms.html    301!
+/tools    /tools.html    301!
+/uae    /uae.html    301!
+/uk    /uk.html    301!
+/usa    /usa.html    301!

@@ -64,3 +64,17 @@
 /uae    /uae.html    301!
 /uk    /uk.html    301!
 /usa    /usa.html    301!
+
+# --- Legacy .php URLs from the previous website (were returning 404/4xx in GSC) ---
+/index.php    /    301
+/aboutus.php    /about.html    301
+/canada.php    /canada.html    301
+/australia.php    /australia.html    301
+/unitedstates.php    /usa.html    301
+/green.php    /usa.html    301
+/ielts.php    /services.html    301
+/work.php    /services.html    301
+/skilled.php    /services.html    301
+/pre.php    /services.html    301
+/application.php    /contact.html    301
+/inq.php    /contact.html    301

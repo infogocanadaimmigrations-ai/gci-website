@@ -1,0 +1,97 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Globe preview · GCI</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ivory:#FBF7EF;--maroon:#7A1E22;--gold:#B8860B;--ink:#2A2622;--muted:#6B5E50;--line:rgba(42,38,34,.14)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#FBF7EF;color:#2A2622;font-family:"Nunito Sans",system-ui,Arial,sans-serif;
+    background-image:radial-gradient(rgba(122,30,34,.08) 1.3px,transparent 1.7px);background-size:22px 22px;min-height:100vh}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(55vw 45vh at 100% -4%,rgba(184,134,11,.22),transparent 60%),radial-gradient(54vw 44vh at -5% 105%,rgba(122,30,34,.14),transparent 62%)}
+  .wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:40px clamp(18px,4vw,48px) 70px}
+  h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(30px,5vw,46px);line-height:1.05;letter-spacing:-.01em}
+  .sub{color:var(--muted);margin:10px 0 30px;max-width:60ch;font-size:16px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  @media(max-width:820px){.grid{grid-template-columns:1fr}}
+  .card{border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.45);
+    box-shadow:0 24px 60px -40px rgba(122,30,34,.5);overflow:hidden;backdrop-filter:blur(4px)}
+  .chead{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}
+  .chead .opt{font-family:"Cormorant Garamond",serif;font-size:22px;font-weight:600}
+  .chead .tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .cstage{position:relative;height:clamp(320px,46vh,440px)}
+  .cstage canvas{display:block;width:100%;height:100%;cursor:grab}
+  .cnote{padding:14px 20px 18px;color:var(--muted);font-size:14px;line-height:1.6}
+  .cnote b{color:var(--ink)}
+  .foot{margin-top:34px;padding:18px 22px;border:1px dashed var(--line);border-radius:14px;color:var(--muted);font-size:14.5px;background:rgba(255,255,255,.4)}
+  .foot b{color:var(--maroon)}
+</style></head>
+<body>
+<div class="wrap">
+  <h1>Globe — two options</h1>
+  <p class="sub">Both keep real continents (so you can read land vs. ocean) but are graded to the GCI palette, with the gold flight arcs and pins as the brand accent. Drag either globe to spin it. Tell me which you prefer (or ask for tweaks) and I'll deploy it.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="chead"><span class="opt">Option A</span><span class="tag">Realistic · warm-graded</span></div>
+      <div class="cstage"><canvas id="gA"></canvas></div>
+      <div class="cnote"><b>True Earth, warmed.</b> Real NASA imagery — blue oceans, green/tan land — gently desaturated and pushed warm so it blends with the ivory & gold theme. Most detail, clearest geography.</div>
+    </div>
+    <div class="card">
+      <div class="chead"><span class="opt">Option B</span><span class="tag">Stylised · flat + coastlines</span></div>
+      <div class="cstage"><canvas id="gB"></canvas></div>
+      <div class="cnote"><b>Clean & designed.</b> Flat teal-blue ocean and sage-green land with a thin gold coastline outline. Simpler and more "branded," still clearly readable.</div>
+    </div>
+  </div>
+  <div class="foot"><b>Note:</b> these are previews only — nothing is live yet. Both spin on their own and respond to drag, exactly like the homepage globe. Pick A or B (or say "make the green warmer", "deeper ocean", etc.).</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  if(!window.THREE)return;
+  var VS='varying vec2 vUv;varying vec3 vN;varying vec3 vV;void main(){vUv=uv;vN=normalize(normalMatrix*normal);vec4 mv=modelViewMatrix*vec4(position,1.0);vV=normalize(-mv.xyz);gl_Position=projectionMatrix*mv;}';
+  var FS_real='uniform sampler2D map;uniform float hasMap;varying vec2 vUv;varying vec3 vN;varying vec3 vV;void main(){vec3 tx=texture2D(map,vUv).rgb;float g=dot(tx,vec3(0.299,0.587,0.114));vec3 c=mix(tx,vec3(g),0.20);c*=vec3(1.07,1.0,0.85);c=clamp(c*1.05,0.0,1.0);vec3 col=mix(vec3(0.09,0.20,0.30),c,hasMap);float fres=pow(1.0-max(dot(normalize(vN),normalize(vV)),0.0),3.0);col+=vec3(0.55,0.40,0.16)*fres;gl_FragColor=vec4(col,1.0);}';
+  var FS_styl='uniform sampler2D map;uniform float hasMap;varying vec2 vUv;varying vec3 vN;varying vec3 vV;void main(){vec3 tx=texture2D(map,vUv).rgb;float l=max(max(tx.r,tx.g),tx.b);float land=smoothstep(0.05,0.12,l)*hasMap;float coast=(smoothstep(0.05,0.085,l)-smoothstep(0.115,0.17,l))*hasMap;vec3 ocean=vec3(0.07,0.21,0.32);vec3 landc=mix(vec3(0.20,0.33,0.19),vec3(0.45,0.51,0.28),smoothstep(0.05,0.35,l));vec3 col=mix(ocean,landc,land);col=mix(col,vec3(0.86,0.69,0.33),coast*0.55);float fres=pow(1.0-max(dot(normalize(vN),normalize(vV)),0.0),3.0);col+=vec3(0.50,0.36,0.14)*fres;gl_FragColor=vec4(col,1.0);}';
+
+  function ll(lat,lng,r){var phi=(90-lat)*Math.PI/180,th=(lng+180)*Math.PI/180;return new THREE.Vector3(-r*Math.sin(phi)*Math.cos(th),r*Math.cos(phi),r*Math.sin(phi)*Math.sin(th));}
+  function dotTex(){var s=64,c=document.createElement('canvas');c.width=c.height=s;var x=c.getContext('2d');var g=x.createRadialGradient(s/2,s/2,0,s/2,s/2,s/2);g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(.4,'rgba(255,255,255,.9)');g.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=g;x.fillRect(0,0,s,s);var t=new THREE.Texture(c);t.needsUpdate=true;return t;}
+  var DOT=dotTex();
+  var origin={lat:30.9,lng:75.85};
+  var dests=[{lat:43.65,lng:-79.38},{lat:51.5,lng:-0.12},{lat:40.71,lng:-74.0},{lat:-33.87,lng:151.21},{lat:-36.85,lng:174.76},{lat:53.34,lng:-6.26},{lat:25.20,lng:55.27},{lat:55.75,lng:37.62},{lat:1.29,lng:103.85},{lat:3.14,lng:101.69},{lat:-20.16,lng:57.50}];
+
+  function build(canvasId, style){
+    var cv=document.getElementById(canvasId), wrap=cv.parentElement;
+    var W=wrap.clientWidth||400,H=wrap.clientHeight||400;
+    var scene=new THREE.Scene();
+    var camera=new THREE.PerspectiveCamera(42,W/H,0.1,100);camera.position.set(0,0,5.0);
+    var renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));renderer.setSize(W,H);renderer.setClearColor(0x000000,0);
+    var R=1.6, globe=new THREE.Group();scene.add(globe);
+    var u={map:{value:DOT},hasMap:{value:0.0}};
+    globe.add(new THREE.Mesh(new THREE.SphereGeometry(R,64,64),new THREE.ShaderMaterial({uniforms:u,vertexShader:VS,fragmentShader:(style==='real'?FS_real:FS_styl)})));
+    var url=(style==='real')?'https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg':'https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-dark.jpg';
+    var ld=new THREE.TextureLoader();ld.setCrossOrigin('anonymous');ld.load(url,function(t){u.map.value=t;u.hasMap.value=1.0;});
+    globe.add(new THREE.Mesh(new THREE.SphereGeometry(R*1.003,36,24),new THREE.MeshBasicMaterial({color:0xC79A3A,wireframe:true,transparent:true,opacity:.06})));
+    // soft glow
+    (function(){var s=256,c=document.createElement('canvas');c.width=c.height=s;var x=c.getContext('2d');var g=x.createRadialGradient(s/2,s/2,s*0.34,s/2,s/2,s/2);g.addColorStop(0,'rgba(184,134,11,.34)');g.addColorStop(.5,'rgba(122,30,34,.10)');g.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=g;x.fillRect(0,0,s,s);var t=new THREE.Texture(c);t.needsUpdate=true;var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));sp.scale.set(R*3.4,R*3.4,1);scene.add(sp);})();
+    function glow(color,sz){var g=new THREE.Group();g.add(new THREE.Mesh(new THREE.SphereGeometry(sz,16,16),new THREE.MeshBasicMaterial({color:color})));var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:DOT,color:color,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));sp.scale.set(sz*7,sz*7,1);g.add(sp);return g;}
+    var oPos=ll(origin.lat,origin.lng,R*1.01);var oM=glow(0x9A2520,0.075);oM.position.copy(oPos);globe.add(oM);
+    dests.forEach(function(dd){var end=ll(dd.lat,dd.lng,R*1.01);var mid=oPos.clone().add(end).multiplyScalar(.5);var lift=1.3+oPos.distanceTo(end)*0.16;mid.normalize().multiplyScalar(R*lift);var curve=new THREE.QuadraticBezierCurve3(oPos.clone(),mid,end.clone());globe.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(50)),new THREE.LineBasicMaterial({color:0xB8860B,transparent:true,opacity:.4})));var m=glow(0xB8860B,0.030);m.position.copy(end);globe.add(m);});
+    var targetQ=new THREE.Quaternion();(function(){var p=ll(origin.lat,origin.lng,1).normalize();targetQ.setFromUnitVectors(p,new THREE.Vector3(0,0,1));})();
+    var YA=new THREE.Vector3(0,1,0),XA=new THREE.Vector3(1,0,0);
+    function rotW(a,ang){var q=new THREE.Quaternion().setFromAxisAngle(a,ang);targetQ.premultiply(q);}
+    var down=false,lx=0,ly=0,velY=0,velX=0,auto=0.0016;
+    cv.addEventListener('pointerdown',function(e){down=true;lx=e.clientX;ly=e.clientY;try{cv.setPointerCapture(e.pointerId);}catch(_){}});
+    cv.addEventListener('pointermove',function(e){if(down){var dx=e.clientX-lx,dy=e.clientY-ly;rotW(YA,dx*0.006);rotW(XA,dy*0.006);velY=dx*0.006;velX=dy*0.006;lx=e.clientX;ly=e.clientY;}});
+    cv.addEventListener('pointerup',function(){down=false;});cv.addEventListener('pointercancel',function(){down=false;});
+    var clock=new THREE.Clock();
+    function animate(){requestAnimationFrame(animate);if(!down){rotW(YA,auto+velY);rotW(XA,velX);velY*=0.93;velX*=0.93;}globe.quaternion.slerp(targetQ,down?0.5:0.12);oM.scale.setScalar(1+Math.sin(clock.getElapsedTime()*2.2)*0.12);renderer.render(scene,camera);}
+    animate();
+    window.addEventListener('resize',function(){W=wrap.clientWidth;H=wrap.clientHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
+  }
+  build('gA','real');
+  build('gB','styl');
+})();
+</script>
+</body></html>

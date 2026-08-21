@@ -206,7 +206,7 @@
 })();
 
 
-/* GCI GA4 lead tracking: fire generate_lead on WhatsApp + phone-call clicks.
+/* GCI lead tracking: GA4 generate_lead + Google Ads conversions. fire generate_lead on WhatsApp + phone-call clicks.
    Delegated + capture phase so it covers every current/future tel: and
    WhatsApp link site-wide (header, footer, contact, floating + sticky buttons). */
 (function () {
@@ -220,11 +220,48 @@
     if (href.indexOf('tel:') === 0) method = 'phone_call';
     else if (/(wa\.me|api\.whatsapp\.com|whatsapp\.com\/send)/.test(href)) method = 'whatsapp';
     if (!method) return;
+    var adsLabel = (method === 'phone_call')
+      ? 'AW-18254506475/DACsCLDY0OUcEOvTtoBE'
+      : 'AW-18254506475/_mGXCLPY0OUcEOvTtoBE';
     try {
       if (typeof window.gtag === 'function') {
+        // GA4 lead event
         window.gtag('event', 'generate_lead', { method: method });
+        // Google Ads conversion. No preventDefault/redirect: a tel: link opens the
+        // dialler and a wa.me link opens a new tab, so THIS page is never unloaded
+        // and the conversion ping completes on its own. Intercepting the click would
+        // also break target="_blank" on the WhatsApp links.
+        window.gtag('event', 'conversion', { send_to: adsLabel });
       } else {
         (window.dataLayer = window.dataLayer || []).push({ event: 'generate_lead', method: method });
+      }
+    } catch (err) {}
+  }, true);
+})();
+
+
+/* GCI Google Ads conversion: email-gated guide downloads (resources page).
+   guide-canada / guide-sop / guide-docs POST straight to a PDF and never reach
+   /thanks.html, so the conversion fires from the submit handler instead.
+   No preventDefault: the POST proceeds normally, and gtag's ping uses sendBeacon
+   so it survives the navigation/download. */
+(function () {
+  if (window.__gciGuideConv) return;
+  window.__gciGuideConv = true;
+  var GUIDES = { 'guide-canada': 1, 'guide-sop': 1, 'guide-docs': 1 };
+  document.addEventListener('submit', function (e) {
+    var f = e.target;
+    if (!f || f.tagName !== 'FORM') return;
+    var gname = f.getAttribute('name') || '';
+    if (!GUIDES[gname]) return;
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', { send_to: 'AW-18254506475/xwUDCKyMxuUcEOvTtoBE' });
+        window.gtag('event', 'generate_lead', { method: 'guide_download', guide: gname });
+      } else {
+        (window.dataLayer = window.dataLayer || []).push({
+          event: 'generate_lead', method: 'guide_download', guide: gname
+        });
       }
     } catch (err) {}
   }, true);

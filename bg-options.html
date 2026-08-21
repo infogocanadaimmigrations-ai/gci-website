@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Background options · GCI</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ivory:#FBF7EF;--maroon:#7A1E22;--gold:#B8860B;--ink:#2A2622;--muted:#6B5E50;--line:rgba(42,38,34,.14)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#efe9dd;color:#2A2622;font-family:"Nunito Sans",system-ui,Arial,sans-serif;padding:34px clamp(16px,4vw,46px) 70px}
+  h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(28px,5vw,44px)}
+  .sub{color:var(--muted);margin:8px 0 26px;max-width:60ch}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:22px}
+  .opt{border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 20px 50px -38px rgba(122,30,34,.5)}
+  .panel{position:relative;height:300px;background-color:#FBF7EF;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:30px;overflow:hidden}
+  /* warm theme glows, shared by all */
+  .panel::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(46vw 40vh at 100% -10%,rgba(184,134,11,.20),transparent 60%),radial-gradient(46vw 40vh at -8% 110%,rgba(122,30,34,.13),transparent 62%)}
+  .panel > *{position:relative;z-index:2}
+  .eye{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .panel h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:34px;margin:8px 0 6px;color:#2A1A12}
+  .panel p{color:var(--muted);font-size:14px;max-width:34ch}
+  .btn{display:inline-block;margin-top:16px;background:linear-gradient(150deg,var(--maroon),#9c3a2a);color:#fff;padding:11px 20px;border-radius:10px;font-weight:700;font-size:14px}
+  .cap{padding:13px 18px;background:#fff}
+  .cap b{font-family:"Cormorant Garamond",serif;font-size:19px}
+  .cap span{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+
+  /* ===== the texture options (applied to .panel background-image) ===== */
+  .t1{background-image:radial-gradient(rgba(122,30,34,.085) 1.3px,transparent 1.7px);background-size:22px 22px}
+  .t2{background-image:radial-gradient(rgba(184,134,11,.16) 1.4px,transparent 1.8px);background-size:30px 30px}
+  .t3{background-image:linear-gradient(rgba(122,30,34,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(122,30,34,.05) 1px,transparent 1px);background-size:30px 30px}
+  .t4{background-image:repeating-linear-gradient(45deg,rgba(122,30,34,.045) 0 1px,transparent 1px 13px)}
+  .t5{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.48  0 0 0 0 0.12  0 0 0 0 0.14  0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")}
+  .t6{background-image:repeating-radial-gradient(circle at 18% 120%,transparent 0 26px,rgba(122,30,34,.04) 26px 27px)}
+  .t7{/* none - clean */}
+</style></head>
+<body>
+  <h1>Background texture — options</h1>
+  <p class="sub">All keep the ivory base and the soft maroon/gold corner glows. Only the surface texture changes. Each panel is a mock section so you can judge it behind real text. Tell me the number you want (or "clean, no texture").</p>
+  <div class="grid">
+    <div class="opt"><div class="panel t1"><span class="eye">Destinations</span><h2>Where will you go?</h2><p>11 countries, 600+ partner universities.</p><span class="btn">Book free assessment</span></div><div class="cap"><b>1 · Current — maroon dots</b><span>What's live now (for comparison).</span></div></div>
+    <div class="opt"><div class="panel t7"><span class="eye">Destinations</span><h2>Where will you go?</h2><p>11 countries, 600+ partner universities.</p><span class="btn">Book free assessment</span></div><div class="cap"><b>2 · Clean — glows only</b><span>No pattern. Most premium &amp; minimal.</span></div></div>
+    <div class="opt"><div class="panel t5"><span class="eye">Destinations</span><h2>Where will you go?</h2><p>11 countries, 600+ partner universities.</p><span class="btn">Book free assessment</span></div><div class="cap"><b>3 · Paper grain</b><span>Subtle tactile noise, like fine stationery.</span></div></div>
+    <div class="opt"><div class="panel t2"><span class="eye">Destinations</span><h2>Where will you go?</h2><p>11 countries, 600+ partner universities.</p><span class="btn">Book free assessment</span></div><div class="cap"><b>4 · Soft gold dots</b><span>Warmer, larger, sparser than current.</span></div></div>
+    <div class="opt"><div class="panel t3"><span class="eye">Destinations</span><h2>Where will you go?</h2><p>11 countries, 600+ partner universities.</p><span class="btn">Book free assessment</span></div><div class="cap"><b>5 · Fine grid</b><span>Quiet graph-paper / blueprint feel.</span></div></div>
+    <div class="opt"><div class="panel t4"><span class="eye">Destinations</span><h2>Where will you go?</h2><p>11 countries, 600+ partner universities.</p><span class="btn">Book free assessment</span></div><div class="cap"><b>6 · Diagonal hatch</b><span>Soft directional texture.</span></div></div>
+    <div class="opt"><div class="panel t6"><span class="eye">Destinations</span><h2>Where will you go?</h2><p>11 countries, 600+ partner universities.</p><span class="btn">Book free assessment</span></div><div class="cap"><b>7 · Contour lines</b><span>Faint map-contour arc — travel feel.</span></div></div>
+  </div>
+</body></html>

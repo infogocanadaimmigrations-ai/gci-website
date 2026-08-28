@@ -96,7 +96,9 @@
 (function () {
   if (document.getElementById('gci-wa')) return;
   var num = '918968465555';
-  var msg = encodeURIComponent("Hi GCI, I'd like to know more about studying abroad.");
+  /* Pages may set window.__gciWaMsg to a page-specific opener (e.g. /uk.html).
+     A specific first message converts better than a generic one. */
+  var msg = encodeURIComponent(window.__gciWaMsg || "Hi GCI, I'd like to know more about studying abroad.");
   var a = document.createElement('a');
   a.id = 'gci-wa';
   a.href = 'https://wa.me/' + num + '?text=' + msg;
@@ -175,7 +177,7 @@
 (function () {
   if (document.getElementById('gci-mobilebar')) return;
   var TEL = '+918968465555';
-  var WA = 'https://wa.me/918968465555?text=' + encodeURIComponent("Hi GCI, I'd like to know more about studying abroad.");
+  var WA = 'https://wa.me/918968465555?text=' + encodeURIComponent(window.__gciWaMsg || "Hi GCI, I'd like to know more about studying abroad.");
   var s = document.createElement('style');
   s.textContent =
     '#gci-mobilebar{display:none}' +

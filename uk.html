@@ -236,15 +236,6 @@ footer{background:#F3EBDD!important;border-top-color:var(--line)!important}
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does it cost to study in the UK from India?", "acceptedAnswer": {"@type": "Answer", "text": "For a one-year Master's outside London, most families should plan for roughly \u20b925\u201340 lakh for the first year once tuition (\u00a311,000\u2013\u00a325,000), living costs (\u00a39,200\u2013\u00a316,000), flights and the visa fee are included. Bachelor's degrees run three years, so the total is higher even though the annual fee can be similar. MBAs are the most expensive at \u00a330,000\u2013\u00a380,000 or more in tuition alone."}}, {"@type": "Question", "name": "Which UK universities accept a 5.5 IELTS band?", "acceptedAnswer": {"@type": "Answer", "text": "Most degree courses ask for 6.0\u20136.5 overall, so 5.5 usually points towards a foundation or pathway programme, which several universities accept at 5.5 and which then progresses into the degree. A handful of institutions also consider PTE, TOEFL or a Medium of Instruction letter instead. Which specific universities accept what changes every intake and is set by each institution \u2014 send us your scoresheet and we will check your target courses against their current published policy."}}, {"@type": "Question", "name": "Can I go to the UK after 12th?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can apply directly to a Bachelor's degree after Class 12, typically needing around 60% or above and IELTS 6.0\u20136.5, though requirements vary by university and subject. If your marks or English are short of the requirement, an International Year One or foundation programme is the usual route and adds one year before the degree begins."}}, {"@type": "Question", "name": "How long does a UK student visa take?", "acceptedAnswer": {"@type": "Answer", "text": "Standard processing for applications made outside the UK is around 15 working days \u2014 about three weeks. During peak season before the September intake it can stretch to three to six weeks, so file early rather than relying on the shortest quoted time. A priority service is available at extra cost at some visa application centres."}}, {"@type": "Question", "name": "What is a CAS letter?", "acceptedAnswer": {"@type": "Answer", "text": "A CAS (Confirmation of Acceptance for Studies) is the reference the university issues once you have accepted your offer and met its conditions, including any deposit. You cannot apply for a student visa without one. Two practical points: a CAS can only be used for one application, and it expires six months after it is issued \u2014 so timing it correctly against your visa filing matters."}}, {"@type": "Question", "name": "Can you promise my visa will be approved?", "acceptedAnswer": {"@type": "Answer", "text": "No &mdash; and no consultant honestly can. Go Canada Immigrations is an independent private consultancy \u2014 we are not affiliated with UK Visas and Immigration or any government body, and we do not issue visas or decide applications. What we do is prepare a complete, honest, well-documented file and tell you plainly where it is weak before you submit. The decision rests entirely with UKVI."}}]}</script>
 <script>window.__gciWaMsg="Hi GCI, I want my UK shortlist.\nCourse: \nMarks/%: \nBudget: \nIntake: ";</script>
-<!-- Microsoft Clarity (project yhd7by7cvu). Placed at the end of <head>, after the
-     LCP hero preload, so it cannot push that preload out of the first TCP window. -->
-<script type="text/javascript">
-(function(c,l,a,r,i,t,y){
-  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window, document, "clarity", "script", "yhd7by7cvu");
-</script>
 </head><body><div class="aurora"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div><div class="vignette"></div><div class="progress" id="progress"></div><div class="stage"><nav id="nav"><div class="wrap"><a href="index.html"><img class="logo" src="logo-dark.png" alt="Go Canada Immigrations" width="760" height="242" decoding="async"></a><ul class="links"><li><a class="" href="index.html">Home</a></li><li><a class="active" href="destinations.html">Destinations</a></li><li><a class="" href="services.html">Services</a></li><li><a class="" href="about.html">About</a></li><li><a class="" href="success.html">Success</a></li><li><a class="" href="blog.html">Blog</a></li><li><a class="" href="partners.html">Partners</a></li><li><a class="" href="contact.html">Contact</a></li></ul><div class="nav-right"><a class="nav-call" href="portal.html">Student login</a><a class="btn-red" href="contact.html">Book free assessment</a><button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></div></div></nav>
 <style>
 .uk-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,56px);align-items:end}
@@ -520,10 +511,12 @@ footer{background:#F3EBDD!important;border-top-color:var(--line)!important}
   }catch(e){}
 })();
 
-/* --- /uk.html engagement events (GA4). -------------------------------------
-   All names are prefixed uk_ so they never collide with the generate_lead
-   event cms.js already fires for WhatsApp and phone taps — that one still
-   counts leads; these describe behaviour on this page only.
+/* --- /uk.html page-specific events (GA4). ----------------------------------
+   Scroll depth, form start/submit and Clarity are site-wide and live in cms.js.
+   Only events that are specific to THIS page belong here.
+   Names are prefixed uk_ so they never collide with the generate_lead event
+   cms.js already fires for WhatsApp and phone taps — that one still counts
+   leads; these describe behaviour on this page only.
    Nothing here touches the form name, the ?submitted=1 redirect or the
    sessionStorage conversion guard. No preventDefault anywhere. ---------------*/
 (function(){
@@ -534,28 +527,8 @@ footer{background:#F3EBDD!important;border-top-color:var(--line)!important}
     }catch(e){}
   }
 
-  /* 1. scroll depth 25/50/75/90 --------------------------------------------
-     docHeight is cached and only recomputed on resize/load: reading
-     scrollHeight inside the scroll handler would force synchronous layout,
-     which this page has had trouble with before. */
-  var marks = [25,50,75,90], hit = {}, docH = 0, ticking = false;
-  function measure(){ docH = document.documentElement.scrollHeight - window.innerHeight; }
-  function check(){
-    ticking = false;
-    if (docH <= 0) return;
-    var pct = ((window.scrollY || window.pageYOffset) / docH) * 100;
-    for (var i=0;i<marks.length;i++){
-      var m = marks[i];
-      if (pct >= m && !hit[m]){ hit[m] = 1; ev('uk_scroll_depth', {percent_scrolled: m}); }
-    }
-  }
-  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(check); } }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  window.addEventListener('resize', function(){ measure(); }, {passive:true});
-  window.addEventListener('load', function(){ measure(); check(); });
-  measure();
 
-  /* 2. fees table viewed + 3. FAQ opened ----------------------------------- */
+  /* fees table viewed + FAQ opened ---------------------------------------- */
   var fees = document.getElementById('uk-fees');
   if (fees && 'IntersectionObserver' in window){
     var io = new IntersectionObserver(function(es){
@@ -573,21 +546,8 @@ footer{background:#F3EBDD!important;border-top-color:var(--line)!important}
     }, true);
   }
 
-  /* 4. form start + 5. form submit ----------------------------------------- */
-  var form = document.querySelector('form.ukf');
-  if (form){
-    var started = false;
-    form.addEventListener('focusin', function(e){
-      if (started) return;
-      var t = e.target;
-      if (!t || !/^(INPUT|SELECT|TEXTAREA)$/.test(t.tagName) || t.type === 'hidden') return;
-      started = true;
-      ev('uk_form_start');
-    });
-    form.addEventListener('submit', function(){ ev('uk_form_submit'); });
-  }
-
-  /* 6. WhatsApp tap -------------------------------------------------------- */
+  /* WhatsApp tap: distinguishes the page CTA from the floating/sticky buttons,
+     which generate_lead alone can't tell apart --------------------------------*/
   document.addEventListener('click', function(e){
     var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
     if (!a) return;

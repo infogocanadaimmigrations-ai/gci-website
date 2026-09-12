@@ -268,3 +268,81 @@
     } catch (err) {}
   }, true);
 })();
+
+
+/* GCI: Microsoft Clarity (site-wide, project yhd7by7cvu).
+   Lives here rather than in each page's <head> so all 69 pages are covered by one
+   line. Trade-off accepted: loading via this deferred file starts Clarity after
+   HTML parse, so the first fraction of a second of a session isn't recorded. */
+(function () {
+  if (window.clarity || document.getElementById('gci-clarity')) return;
+  try {
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.id='gci-clarity';t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yhd7by7cvu");
+  } catch (e) {}
+})();
+
+
+/* GCI: generic engagement events (site-wide GA4).
+   Only events that mean the same thing on every page live here — scroll depth and
+   form start/submit. GA4 attaches the page path automatically, so one event name
+   covers all 69 pages and you segment by page instead of inventing 69 names.
+   Page-specific events (e.g. the UK fees table) stay on their own page.
+   Nothing here calls preventDefault, so form submission and the Google Ads
+   conversion on thanks.html are untouched. */
+(function () {
+  if (window.__gciEngage) return;
+  window.__gciEngage = true;
+
+  function ev(name, params) {
+    try {
+      if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+      else (window.dataLayer = window.dataLayer || []).push(Object.assign({event: name}, params || {}));
+    } catch (e) {}
+  }
+
+  /* scroll depth 25/50/75/90. docHeight is cached and recomputed only on
+     resize/load — reading scrollHeight inside the scroll handler would force
+     synchronous layout, which has cost this site a PageSpeed regression before. */
+  var marks = [25, 50, 75, 90], hit = {}, docH = 0, ticking = false;
+  function measure() { docH = document.documentElement.scrollHeight - window.innerHeight; }
+  function check() {
+    ticking = false;
+    if (docH <= 0) return;
+    var pct = ((window.scrollY || window.pageYOffset) / docH) * 100;
+    for (var i = 0; i < marks.length; i++) {
+      var m = marks[i];
+      if (pct >= m && !hit[m]) { hit[m] = 1; ev('gci_scroll_depth', {percent_scrolled: m}); }
+    }
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(check); }
+  }, {passive: true});
+  window.addEventListener('resize', measure, {passive: true});
+  window.addEventListener('load', function () { measure(); check(); });
+  measure();
+
+  /* form start (first real field focus) and form submit, for every form on the
+     site. form_name lets you tell uk-enquiry from contact, partner, event and
+     the guide downloads. */
+  var started = {};
+  function formName(f) { return (f && f.getAttribute('name')) || 'unnamed'; }
+  document.addEventListener('focusin', function (e) {
+    var t = e.target;
+    if (!t || !/^(INPUT|SELECT|TEXTAREA)$/.test(t.tagName) || t.type === 'hidden') return;
+    var f = t.form;
+    if (!f) return;
+    var n = formName(f);
+    if (started[n]) return;
+    started[n] = 1;
+    ev('gci_form_start', {form_name: n});
+  }, true);
+  document.addEventListener('submit', function (e) {
+    var f = e.target;
+    if (!f || f.tagName !== 'FORM') return;
+    ev('gci_form_submit', {form_name: formName(f)});
+  }, true);
+})();

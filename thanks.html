@@ -15,6 +15,12 @@
   var already = sessionStorage.getItem('gci_conv_form');
   if (ok && !already) {
     gtag('event', 'conversion', {'send_to': 'AW-18254506475/ppY8CMO6xeUcEOvTtoBE'});
+    /* Confirmed success. Deliberately inside the same guard as the conversion, so
+       this count and the Ads conversion count can never drift apart. Compare it
+       against gci_form_submit (the attempt) to see submissions lost in between. */
+    var form = '';
+    try { form = sessionStorage.getItem('gci_last_form') || ''; } catch(e){}
+    gtag('event', 'gci_form_success', form ? {form_name: form} : {});
     try { sessionStorage.setItem('gci_conv_form','1'); } catch(e){}
   }
 })();

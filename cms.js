@@ -343,6 +343,12 @@
   document.addEventListener('submit', function (e) {
     var f = e.target;
     if (!f || f.tagName !== 'FORM') return;
-    ev('gci_form_submit', {form_name: formName(f)});
+    var n = formName(f);
+    /* Stash the name so thanks.html can report gci_form_success for the same form.
+       gci_form_submit counts ATTEMPTS; gci_form_success counts submissions that
+       actually reached the thank-you page. If the two diverge, submissions are
+       being lost between the browser and Netlify. */
+    try { sessionStorage.setItem('gci_last_form', n); } catch (err) {}
+    ev('gci_form_submit', {form_name: n});
   }, true);
 })();
